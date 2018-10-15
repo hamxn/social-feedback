@@ -1,0 +1,8 @@
+{
+  "composer": {
+    "name": "composer",
+    "connector": "loopback-connector-composer",
+    "card": "admin@social-feedback",
+    "namespaces": false
+  }
+}

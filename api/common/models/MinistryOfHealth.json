@@ -1,0 +1,43 @@
+{
+  "name": "MinistryOfHealth",
+  "description": "A participant named MinistryOfHealth",
+  "plural": "MinistryOfHealth",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true,
+    "composer": {
+      "type": "participant",
+      "namespace": "org.healthsystem",
+      "name": "MinistryOfHealth",
+      "fqn": "org.healthsystem.MinistryOfHealth",
+      "abstract": false
+    }
+  },
+  "properties": {
+    "$class": {
+      "type": "string",
+      "default": "org.healthsystem.MinistryOfHealth",
+      "required": false,
+      "description": "The class identifier for this type"
+    },
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "userId": {
+      "type": "string",
+      "id": true,
+      "description": "The instance identifier for this type",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
