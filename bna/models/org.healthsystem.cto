@@ -22,6 +22,8 @@ asset Complaint identified by complaintId {
   o String text optional
   o String images optional
   o String dataCreateIssue 
+  o ComplaintStatus status
+  o ComplaintType type
   --> Citizen owner
   --> DepartmentOfHealth[] resolver // this is user update latest
 }
