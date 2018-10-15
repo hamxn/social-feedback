@@ -1,20 +1,21 @@
 'use strict';
 
 /* global getAssetRegistry getParticipantRegistry getFactory */
-
 /**
- *
- * @transaction Citizen open complaint
+ * Sample transaction processor function.
+ * @param {org.healthsystem.OpenComplaint} tx The sample transaction instance.
+ * @transaction
  */
-async function onOpenComplaint(complaint) {  // eslint-disable-line no-unused-vars
+async function openComplaint(tx) {  // eslint-disable-line no-unused-vars
     console.log('processing in ope complaint');
    
 }
 
 /**
- *
- * @transaction Deparment change status of complaint
+ * Sample transaction processor function.
+ * @param {org.healthsystem.UpdateStatusComplaint} tx The sample transaction instance.
+ * @transaction
  */
-async function onChangeStatusComplaint(status) {  // eslint-disable-line no-unused-vars
+async function changeStatusComplaint(tx) {  // eslint-disable-line no-unused-vars
     console.log('processing on change status');
 }
