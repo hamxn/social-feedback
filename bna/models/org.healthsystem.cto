@@ -1,0 +1,69 @@
+namespace org.healthsystem
+
+enum ComplaintStatus {
+  o OPEN
+  o PENDDING
+  o INGROGRESS
+  o REJECTED
+  o DONE
+}
+
+/**
+ * The production type associated with an complaint
+ */
+enum ComplaintType {
+  o VSATTP
+}
+
+asset Complaint identified by complaintId {
+  o String complaintId
+  o String titile
+  o String Address
+  o String text optional
+  o String images optional
+  o String dataCreateIssue 
+  --> Citizen owner
+  --> DepartmentOfHealth[] resolver // this is user update latest
+}
+
+abstract participant Goverment identified by userId {
+  o String userId
+}
+
+participant MinistryOfHealth extends Goverment {
+  o String firstName
+  o String lastName
+}
+
+participant DepartmentOfHealth extends Goverment {
+  o String firstName
+  o String lastName
+}
+participant Citizen identified by userId {
+  o String userId
+  o String firstName
+  o String lastName
+}
+
+/**
+ * An abstract transaction for change status of complaint
+ */
+abstract transaction ChangeStatus {
+  o String[] logs optional
+}
+
+/**
+ * A transaction for Citizen open complaint
+ */
+transaction OpenComplaint extends ChangeStatus {
+  --> Complaint complaint
+   // TODO
+}
+
+/**
+ * A transaction for Department change status open complaint
+ */
+transaction UpdateStatusComplaint extends ChangeStatus {
+  --> Complaint complaint
+  // TODO
+}
