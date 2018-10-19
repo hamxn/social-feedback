@@ -17,15 +17,15 @@ enum ComplaintType {
 
 asset Complaint identified by complaintId {
   o String complaintId
-  o String titile
-  o String Address
+  o String title
+  o String address
   o String text optional
   o String images optional
   o String dataCreateIssue 
   o ComplaintStatus status
   o ComplaintType type
   --> Citizen owner
-  --> DepartmentOfHealth[] resolver // this is user update latest
+  --> DepartmentOfHealth[] resolvers // this is user update latest
 }
 
 abstract participant Goverment identified by userId {
@@ -50,7 +50,7 @@ participant Citizen identified by userId {
 /**
  * An abstract transaction for change status of complaint
  */
-abstract transaction ChangeStatus {
+abstract transaction ChangeStatus{
   o String[] logs optional
 }
 
@@ -58,8 +58,14 @@ abstract transaction ChangeStatus {
  * A transaction for Citizen open complaint
  */
 transaction OpenComplaint extends ChangeStatus {
-  --> Complaint complaint
-   // TODO
+    o String complaintId
+    o String title
+    o String address
+    o String text optional
+    o String images optional
+    o String dataCreateIssue 
+    o String issuer
+   // --> Citizen issuer
 }
 
 /**
@@ -67,5 +73,6 @@ transaction OpenComplaint extends ChangeStatus {
  */
 transaction UpdateStatusComplaint extends ChangeStatus {
   --> Complaint complaint
-  // TODO
+  --> DepartmentOfHealth resolver
+  o ComplaintStatus status
 }
