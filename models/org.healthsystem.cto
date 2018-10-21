@@ -17,11 +17,11 @@ enum ComplaintType {
 
 asset Complaint identified by complaintId {
   o String complaintId
-  o String title
-  o String address
-  o String text optional
-  o String images optional
-  o String dataCreateIssue 
+  o String title regex=/^(?!\s*$).+/
+  o String address regex=/^(?!\s*$).+/
+  o String text optional 
+  o String[] images optional
+  o DateTime dataCreateIssue 
   o ComplaintStatus status
   o ComplaintType type
   --> Citizen owner
@@ -51,21 +51,18 @@ participant Citizen identified by userId {
  * An abstract transaction for change status of complaint
  */
 abstract transaction ChangeStatus{
-  o String[] logs optional
+  // o String[] logs optional
 }
 
 /**
  * A transaction for Citizen open complaint
  */
 transaction OpenComplaint extends ChangeStatus {
-    o String complaintId
     o String title
     o String address
     o String text optional
-    o String images optional
-    o String dataCreateIssue 
-    o String issuer
-   // --> Citizen issuer
+    o String[] images optional
+    --> Citizen issuer
 }
 
 /**
