@@ -2,8 +2,8 @@ namespace org.healthsystem
 
 enum ComplaintStatus {
   o OPEN
-  o PENDDING
-  o INGROGRESS
+  o PENDING
+  o IN_PROGRESS
   o REJECTED
   o DONE
 }
