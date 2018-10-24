@@ -6,8 +6,7 @@ Vệ sinh an toàn thực phẩm trên thế giới nói chung và của nước
 Công tác bảo đảm an toàn thực phẩm ở nước ta còn nhiều khó khăn, thách thức. Tình trạng ngộ độc thực. phẩm có xu hướng tăng và ảnh hưởng không nhỏ tới sức khoẻ cộng đồng. Sản xuất, kinh doanh thực phẩm ở nước ta cơ bản vẫn là nhỏ lẻ, quy mô hộ gia đình nên việc kiểm soát an toàn vệ sinh rất khó khăn. Mặc dù Việt Nam đã có những tiến bộ rõ rệt trong bảo đảm an toàn vệ sinh thực phẩm trong thời gian qua song công tác quản lý an toàn thực phẩm còn nhiều yếu kém, bất cập, hạn chế về nguồn lực và đầu tư kinh phí vã chưa đáp ứng được yêu cầu thực tiễn.
 
 Thực chất đảm bảo VSATTP chỉ có thể giải quyết được tốt nếu có những biện pháp đồng bộ từ mọi người chúng ta, từ người quản lý, người sản xuất, đến người tiêu dùng điều phải đòng lòng thực hiện với mục tiêu giữ gìn sức khoẻ cho thế hệ chúng ta hôm nay và cả thế hệ con cháu chúng ta ngày mai.
-
-        Sở Nông nghiệp & PTNT
+                                                                                                      Sở Nông nghiệp & PTNT
 
 Trên cơ sở tạo sự liên kết toàn dân để giải quyết vấn đề VSATTP, chúng tôi xây dựng một ứng dụng để có thể tiếp nhận kịp thời những phản ánh của người dân về vấn đề VSATTP, góp phần giải quyết những hạn chế về nguồn lực cũng như kinh phí giám sát.
 
@@ -36,7 +35,7 @@ Có 3 dashboard trong hệ thống.
 ## Featured Technologies
 * Laravel (https://laravel.com/) is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony.
 
-# Manually deploy to IBM Cloud. the Application
+# Manually deploy to IBM Cloud.
 
 ### Ping to the business network
 `composer card import -f ./admin@social-feedback.card`
