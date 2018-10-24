@@ -22,10 +22,11 @@ Có 3 dashboard trong hệ thống.
 # Architecture Flow
 ![Architecture Flow](https://github.com/hamxn/social-feedback/blob/master/flow.png)
 
-1. Người dân có thể xem những thống kê về những phản ánh VSATTP trên dashboard của mình từ hệ thống blockchain.
-2. Người dân đăng nhập vào hệ thống, viết phản ánh và submit phản ánh.
-3. Sở Y Tế nhận phản ảnh ở dashboard của họ, họ sẽ xử lý phản ánh và cập nhận trạng thái vào hệ thống blockchain.
-4. Bộ Y Tế có thể xem và track toàn bộ chi tiết và sự thay đổi trạng thái của phản ánh trên hệ thống blockchain.
+1. Người dân gửi phản ánh đến hệ thống blockchain.
+2. Sở Y Tế tiếp nhận phản ánh
+3. Sở Y Tế xử lý phản ánh, update trạng thái vào cập nhận vào hệ thống blockchain.
+4. Người dân verify trạng thái phản ánh từ hệ thống block chain.
+5. Bộ Y Tế xem và kiểm tra toàn bộ chi tiết của quá trình xử lý phản ánh.
 
 # Included Components
 * [Hyperledger Composer v0.20.2](https://hyperledger.github.io/composer/latest/) Hyperledger Composer is an extensive, open development toolset and framework to make developing blockchain applications easier
