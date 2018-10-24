@@ -20,7 +20,7 @@ Có 3 dashboard trong hệ thống.
 - Bộ Y Tế là bên thứ bên đóng vai trò giám sát.
 
 # Architecture Flow
-![Architecture Flow](docs/doc-images/arch-flow.png?raw=true)
+![Architecture Flow](https://github.com/hamxn/social-feedback/blob/master/flow.png)
 
 1. Người dân có thể xem những thống kê về những phản ánh VSATTP trên dashboard của mình từ hệ thống blockchain.
 2. Người dân đăng nhập vào hệ thống, viết phản ánh và submit phản ánh.
