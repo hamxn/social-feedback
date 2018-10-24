@@ -7,7 +7,7 @@ Công tác bảo đảm an toàn thực phẩm ở nước ta còn nhiều khó 
 
 Thực chất đảm bảo VSATTP chỉ có thể giải quyết được tốt nếu có những biện pháp đồng bộ từ mọi người chúng ta, từ người quản lý, người sản xuất, đến người tiêu dùng điều phải đòng lòng thực hiện với mục tiêu giữ gìn sức khoẻ cho thế hệ chúng ta hôm nay và cả thế hệ con cháu chúng ta ngày mai.
                                                                                                  
-												    `Sở Nông nghiệp & PTNT`
+								`Sở Nông nghiệp & PTNT`
 
 Trên cơ sở tạo sự liên kết toàn dân để giải quyết vấn đề VSATTP, chúng tôi xây dựng một ứng dụng để có thể tiếp nhận kịp thời những phản ánh của người dân về vấn đề VSATTP, góp phần giải quyết những hạn chế về nguồn lực cũng như kinh phí giám sát.
 
