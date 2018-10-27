@@ -3,7 +3,7 @@
     "composer": "^0.20.2"
   },
   "name": "social-feedback",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Get complaint from citizen ",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/social-feedback.bna",

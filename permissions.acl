@@ -9,7 +9,7 @@ rule CitizenOpenComplaint {
 
 rule CitizenReadTheCompaintOwner {
   description:  "Citizen has permit read the compaint which their is owner"
-  participant: "org.hyperledger.composer.system.Participant"
+  participant: "org.healthsystem.Citizen"
   operation: READ
   resource: "org.healthsystem.Complaint"
   condition: (v.owner.getIdentifier() == m.getIdentifier())
@@ -18,7 +18,7 @@ rule CitizenReadTheCompaintOwner {
 
 rule CitizenReadAllCompaintStatusDone {
   description:  "Citizen has permit read all the compaint has status done"
-  participant: "org.hyperledger.composer.system.Participant"
+  participant: "org.healthsystem.Citizen"
   operation: READ
   resource: "org.healthsystem.Complaint"
   condition: (v.status == ComplaintStatus.DONE)
@@ -37,7 +37,7 @@ rule MinistryReadAllIssue {
 rule DeparmentOfHealthChangeStatusComplaint {
   description:  "System ACL to permit all access"
   participant: "org.healthsystem.DepartmentOfHealth"
-  operation: UPDATE
+  operation: READ, UPDATE
   resource: "org.healthsystem.Complaint"
   action: ALLOW
 }
