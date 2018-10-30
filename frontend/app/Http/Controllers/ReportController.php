@@ -164,7 +164,10 @@ class ReportController extends Controller
     {
         $grid->id(trans('app.resolved_page.grid.id'))->sortable();
         $grid->title(trans('app.resolved_page.grid.title'));
-        $grid->content(trans('app.resolved_page.grid.content'));
+        $grid->content(trans('app.resolved_page.grid.content'))->display(function($content) {
+            return str_limit($content, 30, '...');
+        });
+
         $grid->prefecture(trans('app.resolved_page.grid.pref'))
             ->display(
                 function () {
@@ -236,8 +239,8 @@ class ReportController extends Controller
 
         $form->text('title', trans('app.resolved_page.grid.title'))
             ->rules('required|max:100')->placeholder(' ');
-        $form->text('content', trans('app.resolved_page.grid.content'))
-            ->rules('required|max:100')->placeholder(' ');
+        $form->textarea('content', trans('app.resolved_page.grid.content'))
+            ->rules('required')->placeholder(' ');
         $form->select('prefecture_id', trans('app.resolved_page.grid.pref'))
             ->options(Prefecture::getPrefectureOptions());
         $form->text('address', trans('app.resolved_page.grid.address'))
