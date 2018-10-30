@@ -20,9 +20,6 @@
     <a href="https://styleci.io/repos/48796179">
         <img src="https://styleci.io/repos/48796179/shield" alt="StyleCI">
     </a>
-    <a href="https://scrutinizer-ci.com/g/z-song/laravel-admin/?branch=master">
-        <img src="https://scrutinizer-ci.com/g/z-song/laravel-admin/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality">
-    </a>
     <a href="https://packagist.org/packages/encore/laravel-admin">
         <img src="https://img.shields.io/packagist/l/encore/laravel-admin.svg?maxAge=2592000&&style=flat-square" alt="Packagist">
     </a>
@@ -35,9 +32,6 @@
     <a href="#backers" alt="sponsors on Open Collective">
         <img src="https://opencollective.com/laravel-admin/backers/badge.svg" />
     </a> 
-    <a href="#sponsors" alt="Sponsors on Open Collective">
-        <img src="https://opencollective.com/laravel-admin/sponsors/badge.svg" />
-    </a>
 </div>
 
 <p align="center">
@@ -108,6 +102,11 @@ The file `config/admin.php` contains an array of configurations, you can find th
 | [grid-lightbox](https://github.com/laravel-admin-extensions/grid-lightbox) | Turn your grid into a lightbox & gallery          |~1.6 |
 | [daterangepicker](https://github.com/laravel-admin-extensions/daterangepicker) | Integrates daterangepicker into laravel-admin          |~1.6 |
 | [material-ui](https://github.com/laravel-admin-extensions/material-ui) | Material-UI extension for laravel-admin          |~1.6 |
+| [sparkline](https://github.com/laravel-admin-extensions/sparkline) | Integrates jQuery sparkline into laravel-admin          |~1.6 |
+| [chartjs](https://github.com/laravel-admin-extensions/chartjs) | Use Chartjs in laravel-admin          |~1.6 |
+| [simditor](https://github.com/laravel-admin-extensions/simditor) | Integrates simditor full-rich editor into laravel-admin          |~1.6 |
+| [cropper](https://github.com/laravel-admin-extensions/cropper) | A simple jQuery image cropping plugin.          |~1.6 |
+| [composer-viewer](https://github.com/laravel-admin-extensions/composer-viewer) | A web interface of composer packages in laravel.          |~1.6 |
 
 
 ## Contributors
