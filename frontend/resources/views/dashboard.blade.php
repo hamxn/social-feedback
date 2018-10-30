@@ -1,5 +1,5 @@
 <div class="box box-default">
-    <div class="box-header with-border">
+<!--     <div class="box-header with-border">
         <h3 class="box-title"> </h3>
 
         <div class="box-tools pull-right">
@@ -7,19 +7,19 @@
             </button>
             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
         </div>
-    </div>
+    </div> -->
 
     <!-- /.box-header -->
     <div class="box-body">
         <div class="table-responsive">
             <table class="table table-striped">
                 <tr>
-                    <th>Prefecture</th>
-                    <th width="120px">Open</th>
-                    <th width="120px">In Progress</th>
-                    <th width="120px">Reject</th>
-                    <th width="120px">Resolved</th>
-                    <th width="120px">Total</th>
+                    <th width="160px">{{ trans('app.board.pref') }}</th>
+                    <th width="120px">{{ trans('app.board.open') }}</th>
+                    <th width="120px">{{ trans('app.board.in_progress') }}</th>
+                    <th width="120px">{{ trans('app.board.reject') }}</th>
+                    <th width="120px">{{ trans('app.board.resolved') }}</th>
+                    <th width="120px">{{ trans('app.board.total') }}</th>
                 </tr>
                 @foreach($issues as $issue)
                 <tr>

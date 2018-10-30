@@ -60,10 +60,10 @@
                 {{--</li>--}}
                 @else
                 <li>
-                    <a href="{{ admin_base_path('register') }}">Register</a>
+                    <a href="{{ admin_base_path('register') }}">{{ trans('app.register') }}</a>
                 </li>
                 <li>
-                    <a href="{{ admin_base_path('auth/login') }}">Login</a>
+                    <a href="{{ admin_base_path('auth/login') }}">{{ trans('app.login') }}</a>
                 </li>
                 @endif
             </ul>

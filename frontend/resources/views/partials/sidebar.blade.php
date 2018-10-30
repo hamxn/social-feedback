@@ -27,19 +27,19 @@
             <li>
                 <a href="/">
                     <i class="fa fa-bar-chart"></i>
-                    <span>Index</span>
+                    <span>{{ trans('app.menu.overview') }}</span>
                 </a>
             </li>
             <li>
                 <a href="/reports/completed">
                     <i class="fa fa-check"></i>
-                    <span>Đã xử lý</span>
+                    <span>{{ trans('app.menu.resolved_list') }}</span>
                 </a>
             </li>
             <li>
                 <a href="/reports/create">
                     <i class="fa fa-file-o"></i>
-                    <span>Tạo phản ánh</span>
+                    <span>{{ trans('app.menu.add_new') }}</span>
                 </a>
             </li>
             @endif

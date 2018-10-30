@@ -47,8 +47,8 @@ class ReportController extends Controller
     public function completed(Content $content)
     {
         return $content
-            ->header('Completed Reports Page')
-            ->description('Description')
+            ->header(trans('app.resolved_page.header'))
+            ->description(trans('app.resolved_page.description'))
             ->body($this->grid(true));
     }
 
@@ -62,8 +62,8 @@ class ReportController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('Reports Page')
-            ->description('Description')
+            ->header(trans('app.list_page.header'))
+            ->description(trans('app.list_page.description'))
             ->body($this->grid());
     }
 
@@ -77,8 +77,8 @@ class ReportController extends Controller
     public function create(Content $content)
     {
         return $content
-            ->header('Report')
-            ->description('Create')
+            ->header(trans('app.post_page.header'))
+            ->description(trans('app.post_page.description'))
             ->body($this->form());
     }
 
@@ -93,8 +93,8 @@ class ReportController extends Controller
     public function show($id, Content $content)
     {
         return $content
-            ->header('Report')
-            ->description('Detail')
+            ->header(trans('app.detail_page.header'))
+            ->description(trans('app.detail_page.description'))
             ->body($this->detail($id));
     }
 
@@ -109,8 +109,8 @@ class ReportController extends Controller
     public function completedDetail($id, Content $content)
     {
         return $content
-            ->header('Report')
-            ->description('Detail')
+            ->header(trans('app.detail_page.header'))
+            ->description(trans('app.detail_page.description'))
             ->body($this->detail($id, true));
     }
 
@@ -147,6 +147,8 @@ class ReportController extends Controller
 
         $grid->disableRowSelector();
         $grid->disableExport();
+        $grid->disableFilter();
+
         return $grid;
     }
 
@@ -160,10 +162,10 @@ class ReportController extends Controller
      */
     protected function gridDisplay(Grid $grid)
     {
-        $grid->id('ID')->sortable();
-        $grid->title();
-        $grid->content();
-        $grid->prefecture()
+        $grid->id(trans('app.resolved_page.grid.id'))->sortable();
+        $grid->title(trans('app.resolved_page.grid.title'));
+        $grid->content(trans('app.resolved_page.grid.content'));
+        $grid->prefecture(trans('app.resolved_page.grid.pref'))
             ->display(
                 function () {
                     return Prefecture::getPrefNameByPrefId(
@@ -171,14 +173,16 @@ class ReportController extends Controller
                     );
                 }
             );
-        $grid->address();
-        $grid->status()
+        $grid->address(trans('app.resolved_page.grid.address'));
+        $grid->status(trans('app.resolved_page.grid.status'))
             ->display(
                 function () {
                     return $this->status_text;
                 }
             );
-        $grid->created_at();
+        $grid->created_at(trans('app.resolved_page.grid.create_at'));
+
+        $grid->disableCreateButton();
     }
 
     /**
@@ -228,17 +232,17 @@ class ReportController extends Controller
     {
         $form = new Form(new Issue);
 
-        $form->display('id', 'ID');
+        $form->display('id', trans('app.resolved_page.grid.id'));
 
-        $form->text('title', 'Title')
-            ->rules('required|max:100');
-        $form->text('content', 'Content')
-            ->rules('required|max:100');
-        $form->select('prefecture_id', 'Prefecture')
+        $form->text('title', trans('app.resolved_page.grid.title'))
+            ->rules('required|max:100')->placeholder(' ');
+        $form->text('content', trans('app.resolved_page.grid.content'))
+            ->rules('required|max:100')->placeholder(' ');
+        $form->select('prefecture_id', trans('app.resolved_page.grid.pref'))
             ->options(Prefecture::getPrefectureOptions());
-        $form->text('address', 'Address')
-            ->rules('required|max:100');
-        $form->image('image_path', 'Image')
+        $form->text('address', trans('app.resolved_page.grid.address'))
+            ->rules('required|max:100')->placeholder(' ');
+        $form->image('image_path', trans('app.resolved_page.grid.image'))
             ->uniqueName()
             ->removable();
 
@@ -250,6 +254,20 @@ class ReportController extends Controller
                 $form->model()->image_hash = md5($image->get());
             }
         );
+
+        $form->footer(function ($footer) {
+
+            // disable `View` checkbox
+            $footer->disableViewCheck();
+
+            // disable `Continue editing` checkbox
+            $footer->disableEditingCheck();
+
+            // disable `Continue Creating` checkbox
+            $footer->disableCreatingCheck();
+
+        });
+
         return $form;
     }
 
@@ -269,17 +287,17 @@ class ReportController extends Controller
         }
         $show = new Show($query->findOrFail($id));
 
-        $show->id('ID');
-        $show->title();
-        $show->content();
-        $show->prefecture()->as(
+        $show->id(trans('app.resolved_page.grid.id'));
+        $show->title(trans('app.resolved_page.grid.title'));
+        $show->content(trans('app.resolved_page.grid.content'));
+        $show->prefecture(trans('app.resolved_page.grid.pref'))->as(
             function () {
                 return Prefecture::getPrefNameByPrefId(
                     $this->prefecture_id
                 );
             }
         );
-        $show->address();
+        $show->address(trans('app.resolved_page.grid.address'));
 
         $issue = $show->getModel();
         
@@ -291,8 +309,8 @@ class ReportController extends Controller
             }
         }
 
-        $show->created_at(trans('admin.created_at'));
-        $show->updated_at(trans('admin.updated_at'));
+        $show->created_at(trans('app.resolved_page.grid.create_at'));
+        $show->updated_at(trans('app.resolved_page.grid.update_at'));
 
         $show->panel()
             ->tools(
