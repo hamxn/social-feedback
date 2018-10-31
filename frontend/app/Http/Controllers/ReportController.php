@@ -297,7 +297,6 @@ class ReportController extends Controller
 
             // disable `Continue Creating` checkbox
             $footer->disableCreatingCheck();
-
         });
 
         $form->saving(
@@ -331,7 +330,11 @@ class ReportController extends Controller
         if ($completed) {
             $query = Issue::completed();
         }
-        $form = new Form($query->findOrFail($id));
+
+        $form = new Form(Issue::findOrFail($id));
+        if (!Auth::user()->can('view-all-issue')) {
+            $form = new Form($query->findOrFail($id));
+        }
         $form->setTitle('Detail');
 
         $form->display(trans('app.resolved_page.grid.id'))
@@ -343,7 +346,7 @@ class ReportController extends Controller
         $form->display(trans('app.resolved_page.grid.pref'))
             ->value(
                 Prefecture::getPrefNameByPrefId(
-                    $form->model()->prefecture
+                    $form->model()->prefecture_id
                 )
             );
         $form->display(trans('app.resolved_page.grid.address'))
@@ -388,9 +391,22 @@ class ReportController extends Controller
             }
         );
 
+        if (!Auth::user()->can('update-issue')) {
+            $form->disableSubmit();
+        }
+
         $form->disableReset();
-        $form->disableEditingCheck();
-        $form->disableViewCheck();
+        $form->footer(function ($footer) {
+
+            // disable `View` checkbox
+            $footer->disableViewCheck();
+
+            // disable `Continue editing` checkbox
+            $footer->disableEditingCheck();
+
+            // disable `Continue Creating` checkbox
+            $footer->disableCreatingCheck();
+        });
 
         return $form;
     }
