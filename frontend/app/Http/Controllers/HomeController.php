@@ -17,7 +17,6 @@ use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
 use App\Models\Issue;
-use Illuminate\Support\Facades\App;
 
 /**
  * Class HomeController
@@ -41,9 +40,9 @@ class HomeController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header(\Lang::get('app.home.header'))
-            ->description(\Lang::get('app.home.description'))
-            ->row(Dashboard::title())
+            ->header(trans('app.home.header'))
+            ->description(trans('app.home.description'))
+            ->row(view('dashboard.title'))
             ->row(
                 function (Row $row) {
                     $row->column(3, '');

@@ -194,13 +194,13 @@ class ReportController extends Controller
      */
     protected function gridDisplay(Grid $grid)
     {
-        $grid->id(trans('app.resolved_page.grid.id'))->sortable();
-        $grid->title(trans('app.resolved_page.grid.title'));
-        $grid->content(trans('app.resolved_page.grid.content'))->display(function ($content) {
+        $grid->id(trans('app.issue.id'))->sortable();
+        $grid->title(trans('app.issue.title'));
+        $grid->content(trans('app.issue.content'))->display(function ($content) {
             return str_limit($content, 30, '...');
         });
 
-        $grid->prefecture(trans('app.resolved_page.grid.pref'))
+        $grid->prefecture(trans('app.issue.pref'))
             ->display(
                 function () {
                     return Prefecture::getPrefNameByPrefId(
@@ -208,14 +208,16 @@ class ReportController extends Controller
                     );
                 }
             );
-        $grid->address(trans('app.resolved_page.grid.address'));
-        $grid->status(trans('app.resolved_page.grid.status'))
+        $grid->address(trans('app.issue.address'))->display(function ($address) {
+            return str_limit($address, 30, '...');
+        });
+        $grid->status(trans('app.issue.status'))
             ->display(
                 function () {
                     return $this->status_text;
                 }
             );
-        $grid->created_at(trans('app.resolved_page.grid.create_at'));
+        $grid->created_at(trans('app.issue.create_at'));
     }
 
     /**
@@ -233,16 +235,23 @@ class ReportController extends Controller
             function ($filter) use ($completed) {
                 $filter->disableIdFilter();
 
-                $filter->like('title');
+                $filter
+                ->like('title', trans('app.issue.title'))
+                ->placeholder('');
 
-                $filter->like('content');
+                $filter
+                ->like('content', trans('app.issue.content'))
+                ->placeholder('');
 
                 if (Auth::user() && !Auth::user()->can('view-agent-issue')) {
-                    $filter->equal('prefecture_id', 'Prefecture')
+                    $filter
+                        ->equal('prefecture_id', trans('app.issue.pref'))
                         ->select(Prefecture::getPrefectureOptions());
                 }
 
-                $filter->like('address');
+                $filter
+                ->like('address', trans('app.issue.address'))
+                ->placeholder('');
 
                 $statusOptions = Issue::statusOptions();
 
@@ -250,7 +259,7 @@ class ReportController extends Controller
                     $statusOptions = Issue::statusCompletedOptions();
                 }
 
-                $filter->equal('status')
+                $filter->equal('status', trans('app.issue.status'))
                     ->select($statusOptions);
 
                 $filter->between('created_at', 'Created at')->datetime();
@@ -267,17 +276,17 @@ class ReportController extends Controller
     {
         $form = new Form(new Issue);
 
-        $form->display('id', trans('app.resolved_page.grid.id'));
+        $form->display('id', trans('app.issue.id'));
 
-        $form->text('title', trans('app.resolved_page.grid.title'))
+        $form->text('title', trans('app.issue.title'))
             ->rules('required|max:100')->placeholder(' ');
-        $form->text('content', trans('app.resolved_page.grid.content'))
-            ->rules('required|max:100')->placeholder(' ');
-        $form->select('prefecture_id', trans('app.resolved_page.grid.pref'))
+        $form->textarea('content', trans('app.issue.content'))
+            ->rules('required')->placeholder(' ');
+        $form->select('prefecture_id', trans('app.issue.pref'))
             ->options(Prefecture::getPrefectureOptions());
-        $form->text('address', trans('app.resolved_page.grid.address'))
+        $form->text('address', trans('app.issue.address'))
             ->rules('required|max:100')->placeholder(' ');
-        $form->image('image_path', trans('app.resolved_page.grid.image'))
+        $form->image('image_path', trans('app.issue.image'))
             ->uniqueName()
             ->removable();
 
@@ -337,19 +346,19 @@ class ReportController extends Controller
         }
         $form->setTitle('Detail');
 
-        $form->display(trans('app.resolved_page.grid.id'))
+        $form->display(trans('app.issue.id'))
             ->value($form->model()->id);
-        $form->display(trans('app.resolved_page.grid.title'))
+        $form->display(trans('app.issue.title'))
             ->value($form->model()->title);
-        $form->display(trans('app.resolved_page.grid.content'))
+        $form->display(trans('app.issue.content'))
             ->value($form->model()->content);
-        $form->display(trans('app.resolved_page.grid.pref'))
+        $form->display(trans('app.issue.pref'))
             ->value(
                 Prefecture::getPrefNameByPrefId(
                     $form->model()->prefecture_id
                 )
             );
-        $form->display(trans('app.resolved_page.grid.address'))
+        $form->display(trans('app.issue.address'))
             ->value($form->model()->address);
 
         $issue = $form->model();
@@ -368,9 +377,9 @@ class ReportController extends Controller
             }
         }
 
-        $form->display(trans('app.resolved_page.grid.create_at'))
+        $form->display(trans('app.issue.create_at'))
             ->value($form->model()->created_at);
-        $form->display(trans('app.resolved_page.grid.update_at'))
+        $form->display(trans('app.issue.update_at'))
             ->value($form->model()->updated_at);
 
         if (Auth::user()->can('update-issue')) {

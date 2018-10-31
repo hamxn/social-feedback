@@ -57,18 +57,19 @@ return [
     'resolved_page'  => [
         'header'                    => 'Danh sách đã xử lý',
         'description'               => '',
-        'grid' => [
-            'id' => 'ID',
-            'title' => 'Tiêu đề',
-            'content'   => 'Nội dung phản ánh',
-            'pref'  => 'Tỉnh, thành phố',
-            'address' => 'Địa chỉ',
-            'status' => 'Trạng thái',
-            'action' => 'Chức năng',
-            'image' => 'Hình ảnh',
-            'create_at' => 'Ngày gửi',
-            'update_at' => 'Ngày cập nhật',
-        ],
+    ],
+
+    'issue' => [
+        'id' => 'ID',
+        'title' => 'Tiêu đề',
+        'content'   => 'Nội dung phản ánh',
+        'pref'  => 'Tỉnh, thành phố',
+        'address' => 'Địa chỉ',
+        'status' => 'Trạng thái',
+        'action' => 'Chức năng',
+        'image' => 'Hình ảnh',
+        'create_at' => 'Ngày gửi',
+        'update_at' => 'Ngày cập nhật',
     ],
 
 ];
