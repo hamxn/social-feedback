@@ -1,3 +1,4 @@
+/**
 rule CitizenOpenComplaint {
   description:  "CItizen has perment open complaint"
   participant: "org.healthsystem.Citizen"
@@ -6,7 +7,9 @@ rule CitizenOpenComplaint {
   transaction: "org.healthsystem.OpenComplaint"
   action: ALLOW
 }
+*/
 
+/**
 rule CitizenReadTheCompaintOwner {
   description:  "Citizen has permit read the compaint which their is owner"
   participant: "org.healthsystem.Citizen"
@@ -14,8 +17,9 @@ rule CitizenReadTheCompaintOwner {
   resource: "org.healthsystem.Complaint"
   condition: (v.owner.getIdentifier() == m.getIdentifier())
   action: ALLOW
-}
+}*/
 
+/**
 rule CitizenReadAllCompaintStatusDone {
   description:  "Citizen has permit read all the compaint has status done"
   participant: "org.healthsystem.Citizen"
@@ -24,6 +28,7 @@ rule CitizenReadAllCompaintStatusDone {
   condition: (v.status == ComplaintStatus.DONE)
   action: ALLOW
 }
+}*/
 
 rule MinistryReadAllIssue {
   description:  "The ministry of Health has permit read all complaint in blockchain network"

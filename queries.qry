@@ -11,12 +11,12 @@ query selectComplaintsByOwner {
   description: "Select all complaint base on their owner"
   statement:
       SELECT org.healthsystem.Complaint
-          WHERE (owner == _$owner)
+          WHERE (issuerId == _$owner)
 }
 
 query selectComplaintsByStatusDone {
   description: "Select all commodities based on their owner"
   statement:
       SELECT org.healthsystem.Complaint
-          WHERE (status == 'DONE')
+          WHERE (status == 3)
 }
