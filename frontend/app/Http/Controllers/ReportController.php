@@ -22,6 +22,7 @@ use App\Models\Prefecture;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Encore\Admin\Auth\Permission;
 
 /**
  * Class ReportController
@@ -76,6 +77,7 @@ class ReportController extends Controller
      */
     public function create(Content $content)
     {
+        Permission::check('create-issue');
         return $content
             ->header(trans('app.post_page.header'))
             ->description(trans('app.post_page.description'))
@@ -115,6 +117,22 @@ class ReportController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus($id)
+    {
+        Permission::check('update-issue');
+        $report = Issue::agent()->findOrFail($id);
+        $report->status = request()->status;
+        $report->save();
+        return redirect(admin_base_path('reports'));
+    }
+
+    /**
      * Make a grid builder.
      *
      * @param boolean $completed to filter list
@@ -125,8 +143,22 @@ class ReportController extends Controller
     {
         $grid = new Grid(new Issue);
 
+        $is_logIn = Auth::user() ? true : false;
+
+        if ($is_logIn && Auth::user()->can('view-my-issue')) {
+            $grid->model()->my();
+        }
+
+        if ($is_logIn && Auth::user()->can('view-agent-issue')) {
+            $grid->model()->agent();
+        }
+
         if ($completed) {
             $grid->model()->completed();
+        }
+
+        if ($is_logIn && !Auth::user()->can('create-issue')) {
+            $grid->disableCreateButton();
         }
 
         // Define for display grid view
@@ -147,7 +179,7 @@ class ReportController extends Controller
 
         $grid->disableRowSelector();
         $grid->disableExport();
-        $grid->disableFilter();
+        $grid->disableCreateButton();
 
         return $grid;
     }
@@ -164,7 +196,7 @@ class ReportController extends Controller
     {
         $grid->id(trans('app.resolved_page.grid.id'))->sortable();
         $grid->title(trans('app.resolved_page.grid.title'));
-        $grid->content(trans('app.resolved_page.grid.content'))->display(function($content) {
+        $grid->content(trans('app.resolved_page.grid.content'))->display(function ($content) {
             return str_limit($content, 30, '...');
         });
 
@@ -184,8 +216,6 @@ class ReportController extends Controller
                 }
             );
         $grid->created_at(trans('app.resolved_page.grid.create_at'));
-
-        $grid->disableCreateButton();
     }
 
     /**
@@ -207,8 +237,10 @@ class ReportController extends Controller
 
                 $filter->like('content');
 
-                $filter->equal('prefecture_id', 'Prefecture')
-                    ->select(Prefecture::getPrefectureOptions());
+                if (Auth::user() && !Auth::user()->can('view-agent-issue')) {
+                    $filter->equal('prefecture_id', 'Prefecture')
+                        ->select(Prefecture::getPrefectureOptions());
+                }
 
                 $filter->like('address');
 
@@ -239,8 +271,8 @@ class ReportController extends Controller
 
         $form->text('title', trans('app.resolved_page.grid.title'))
             ->rules('required|max:100')->placeholder(' ');
-        $form->textarea('content', trans('app.resolved_page.grid.content'))
-            ->rules('required')->placeholder(' ');
+        $form->text('content', trans('app.resolved_page.grid.content'))
+            ->rules('required|max:100')->placeholder(' ');
         $form->select('prefecture_id', trans('app.resolved_page.grid.pref'))
             ->options(Prefecture::getPrefectureOptions());
         $form->text('address', trans('app.resolved_page.grid.address'))
@@ -249,15 +281,12 @@ class ReportController extends Controller
             ->uniqueName()
             ->removable();
 
-        $form->saving(
-            function (Form $form) {
-                $form->model()->issuer_id = Auth::id();
-                $form->model()->status = Issue::STATUS_OPEN;
-                $image = Input::all()['image_path'];
-                $form->model()->image_hash = md5($image->get());
+        $form->tools(
+            function (Form\Tools $tools) {
+                $tools->disableView();
+                $tools->disableDelete();
             }
         );
-
         $form->footer(function ($footer) {
 
             // disable `View` checkbox
@@ -271,6 +300,16 @@ class ReportController extends Controller
 
         });
 
+        $form->saving(
+            function (Form $form) {
+                $form->model()->issuer_id = Auth::id();
+                $form->model()->status = Issue::STATUS_OPEN;
+                $image = Input::all()['image_path'] ?? null;
+                if ($image) {
+                    $form->model()->image_hash = md5($image->get());
+                }
+            }
+        );
         return $form;
     }
 
@@ -285,44 +324,86 @@ class ReportController extends Controller
     protected function detail($id, $completed = false)
     {
         $query = Issue::my();
+        if (Auth::user()->can('view-agent-issue')) {
+            $query = Issue::agent();
+        }
+        
         if ($completed) {
             $query = Issue::completed();
         }
-        $show = new Show($query->findOrFail($id));
+        $form = new Form($query->findOrFail($id));
+        $form->setTitle('Detail');
 
-        $show->id(trans('app.resolved_page.grid.id'));
-        $show->title(trans('app.resolved_page.grid.title'));
-        $show->content(trans('app.resolved_page.grid.content'));
-        $show->prefecture(trans('app.resolved_page.grid.pref'))->as(
-            function () {
-                return Prefecture::getPrefNameByPrefId(
-                    $this->prefecture_id
-                );
-            }
-        );
-        $show->address(trans('app.resolved_page.grid.address'));
+        $form->display(trans('app.resolved_page.grid.id'))
+            ->value($form->model()->id);
+        $form->display(trans('app.resolved_page.grid.title'))
+            ->value($form->model()->title);
+        $form->display(trans('app.resolved_page.grid.content'))
+            ->value($form->model()->content);
+        $form->display(trans('app.resolved_page.grid.pref'))
+            ->value(
+                Prefecture::getPrefNameByPrefId(
+                    $form->model()->prefecture
+                )
+            );
+        $form->display(trans('app.resolved_page.grid.address'))
+            ->value($form->model()->address);
 
-        $issue = $show->getModel();
+        $issue = $form->model();
         
         if ($issue->image_path) {
             $disk = config('admin.upload.disk');
             $image_hash = md5(Storage::disk($disk)->get($issue->image_path));
             if ($image_hash === $issue->image_hash) {
-                $show->image_path('Image')->image();
+                $disk = config('admin.upload.disk');
+                $src = Storage::disk($disk)->url($issue->image_path);
+                $form->html(
+                    "<img src='$src' "
+                    . " style='max-width:160px;max-height:160px'"
+                    . " class='img' />"
+                );
             }
         }
 
-        $show->created_at(trans('app.resolved_page.grid.create_at'));
-        $show->updated_at(trans('app.resolved_page.grid.update_at'));
+        $form->display(trans('app.resolved_page.grid.create_at'))
+            ->value($form->model()->created_at);
+        $form->display(trans('app.resolved_page.grid.update_at'))
+            ->value($form->model()->updated_at);
 
-        $show->panel()
-            ->tools(
-                function ($tools) {
-                    $tools->disableEdit();
-                    $tools->disableDelete();
-                }
-            );
+        if (Auth::user()->can('update-issue')) {
+            $form->radio('status', 'Status')
+                ->options(Issue::statusOptionsForAgent($form->model()->status))
+                ->default($form->model()->status)
+                ->rules(
+                    'in:' . Issue::STATUS_INPROGRESS . ','
+                    . Issue::STATUS_RESOLVED . ',' . Issue::STATUS_REJECT
+                );
+            $form->setAction('/reports/update_status/' . $form->model()->id);
+        }
 
-        return $show;
+        $form->tools(
+            function ($tools) {
+                $tools->disableView();
+                $tools->disableDelete();
+            }
+        );
+
+        $form->disableReset();
+        $form->disableEditingCheck();
+        $form->disableViewCheck();
+
+        return $form;
+    }
+
+    /**
+     * Check if user in $roles.
+     *
+     * @param array $roles to check
+     *
+     * @return boolean
+     */
+    protected function inRoles($roles)
+    {
+        return Auth::guard('admin')->user()->inRoles($roles);
     }
 }

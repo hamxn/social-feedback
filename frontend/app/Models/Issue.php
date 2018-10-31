@@ -89,7 +89,32 @@ class Issue extends Model
     }
 
     /**
-     * Query to get issue by agent
+     * Get status's options of table issue
+     *
+     * @param int $current_status
+     *
+     * @return array status's options of table issue
+     */
+    public static function statusOptionsForAgent($current_status)
+    {
+        if ($current_status == self::STATUS_RESOLVED || $current_status == self::STATUS_REJECT) {
+            return [
+                $current_status =>
+                    config('myconfig.issue.status.' . $current_status)
+            ];
+        }
+        return [
+            self::STATUS_INPROGRESS =>
+                config('myconfig.issue.status.' . self::STATUS_INPROGRESS),
+            self::STATUS_RESOLVED =>
+                config('myconfig.issue.status.' . self::STATUS_RESOLVED),
+            self::STATUS_REJECT   =>
+                config('myconfig.issue.status.' . self::STATUS_REJECT),
+        ];
+    }
+
+    /**
+     * Query to get issue by user
      *
      * @param object $query to add condition
      *
@@ -98,6 +123,22 @@ class Issue extends Model
     public function scopeMy($query)
     {
         return $query->where('issuer_id', '=', Auth::id());
+    }
+
+    /**
+     * Query to get issue by agent
+     *
+     * @param object $query to add condition
+     *
+     * @return object query
+     */
+    public function scopeAgent($query)
+    {
+        return $query->where(
+            'prefecture_id',
+            '=',
+            Auth::user()->prefecture_id
+        );
     }
 
     /**
@@ -114,6 +155,24 @@ class Issue extends Model
             [
                 self::STATUS_RESOLVED,
                 self::STATUS_REJECT
+            ]
+        );
+    }
+
+    /**
+     * Query to get uncompleted issue
+     *
+     * @param object $query to add condition
+     *
+     * @return object query
+     */
+    public function scopeUncompleted($query)
+    {
+        return $query->whereIn(
+            'status',
+            [
+                self::STATUS_OPEN,
+                self::STATUS_INPROGRESS
             ]
         );
     }

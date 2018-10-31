@@ -1,11 +1,11 @@
 <?php
 /**
- * AddEmailToAdminUsers
+ * ModifyAdminUsers
  *
  * PHP version 7
  *
  * @category Migrations
- * @package  AddEmailToAdminUsers
+ * @package  ModifyAdminUsers
  * @author   XuanDD <xuandd@lifull-tech.vn>
  * @link     https://bitbucket.org/dinhdiemxuan/reportchain
  */
@@ -14,16 +14,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class AddEmailToAdminUsers
- *
- * PHP version 7
+ * Class ModifyAdminUsers
  *
  * @category Migrations
- * @package  AddEmailToAdminUsers
+ * @package  ModifyAdminUsers
  * @author   XuanDD <xuandd@lifull-tech.vn>
  * @link     https://bitbucket.org/dinhdiemxuan/reportchain
  */
-class AddEmailToAdminUsers extends Migration
+class ModifyAdminUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -35,7 +33,7 @@ class AddEmailToAdminUsers extends Migration
         Schema::table(
             'admin_users',
             function (Blueprint $table) {
-                $table->string('email')->nullable();
+                $table->tinyInteger('prefecture_id')->nullable();
             }
         );
     }
@@ -50,7 +48,7 @@ class AddEmailToAdminUsers extends Migration
         Schema::table(
             'admin_users',
             function (Blueprint $table) {
-                $table->dropColumn('email');
+                $table->dropColumn('prefecture_id');
             }
         );
     }

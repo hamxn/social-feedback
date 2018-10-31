@@ -30,6 +30,8 @@ Route::group(
             ->where(['id' => '\d+']);
         $router->resource('reports', 'ReportController')
             ->except('destroy');
+        $router->post('reports/update_status/{id}', 'ReportController@updateStatus')
+            ->where(['id' => '\d+']);
     }
 );
 

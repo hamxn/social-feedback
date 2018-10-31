@@ -24,5 +24,5 @@ use Encore\Admin\Auth\Database\Administrator as Model;
  */
 class Administrator extends Model
 {
-    protected $fillable = ['username', 'password', 'name', 'email'];
+    protected $fillable = ['username', 'password', 'name', 'email', 'prefecture_id'];
 }

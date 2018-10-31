@@ -16,7 +16,8 @@ return [
     'roles' => [
         'text' => [
             'USER'  => 2,
-            'AGENT' => 3
+            'AGENT' => 3,
+            'MINISTRY' => 4,
         ]
     ],
 
