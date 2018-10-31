@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Report-chain',
+    'name' => 'Social-feedback',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Report</b>-chain',
+    'logo' => '<b>Social</b>-feedback',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>Rc</b>',
+    'logo-mini' => '<b>Sf</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +75,7 @@ return [
     | Html title for all pages.
     |
     */
-    'title' => 'Report-chain',
+    'title' => 'Social-feedback',
 
     /*
     |--------------------------------------------------------------------------
