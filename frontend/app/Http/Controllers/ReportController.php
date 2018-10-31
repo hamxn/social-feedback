@@ -340,6 +340,7 @@ class ReportController extends Controller
             $query = Issue::completed();
         }
 
+        Form::registerBuiltinFields();
         $form = new Form(Issue::findOrFail($id));
         if (!Auth::user()->can('view-all-issue')) {
             $form = new Form($query->findOrFail($id));
