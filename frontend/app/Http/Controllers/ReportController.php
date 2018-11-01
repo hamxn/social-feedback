@@ -332,7 +332,8 @@ class ReportController extends Controller
     protected function detail($id, $completed = false)
     {
         $query = Issue::my();
-        if (Auth::user() && Auth::user()->can('view-agent-issue')) {
+        $is_logIn = Auth::user() ? true : false;
+        if ($is_logIn && Auth::user()->can('view-agent-issue')) {
             $query = Issue::agent();
         }
         
@@ -342,7 +343,7 @@ class ReportController extends Controller
 
         Form::registerBuiltinFields();
         $form = new Form(Issue::findOrFail($id));
-        if (!Auth::user() || !Auth::user()->can('view-all-issue')) {
+        if (!$is_logIn || !Auth::user()->can('view-all-issue')) {
             $form = new Form($query->findOrFail($id));
         }
         $form->setTitle('Detail');
@@ -383,7 +384,7 @@ class ReportController extends Controller
         $form->display(trans('app.issue.update_at'))
             ->value($form->model()->updated_at);
 
-        if (Auth::user()->can('update-issue')) {
+        if ($is_logIn && Auth::user()->can('update-issue')) {
             $form->radio('status', 'Status')
                 ->options(Issue::statusOptionsForAgent($form->model()->status))
                 ->default($form->model()->status)
@@ -401,7 +402,7 @@ class ReportController extends Controller
             }
         );
 
-        if (!Auth::user()->can('update-issue')) {
+        if (!$is_logIn || !Auth::user()->can('update-issue')) {
             $form->disableSubmit();
         }
 
