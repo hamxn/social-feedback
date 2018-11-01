@@ -332,7 +332,7 @@ class ReportController extends Controller
     protected function detail($id, $completed = false)
     {
         $query = Issue::my();
-        if (Auth::user()->can('view-agent-issue')) {
+        if (Auth::user() && Auth::user()->can('view-agent-issue')) {
             $query = Issue::agent();
         }
         
@@ -342,7 +342,7 @@ class ReportController extends Controller
 
         Form::registerBuiltinFields();
         $form = new Form(Issue::findOrFail($id));
-        if (!Auth::user()->can('view-all-issue')) {
+        if (!Auth::user() || !Auth::user()->can('view-all-issue')) {
             $form = new Form($query->findOrFail($id));
         }
         $form->setTitle('Detail');
