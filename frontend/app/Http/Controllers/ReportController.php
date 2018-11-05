@@ -147,6 +147,9 @@ class ReportController extends Controller
 
         if ($is_logIn && Auth::user()->can('view-my-issue')) {
             $grid->model()->my();
+            if (!isset(request()->status) && $completed == false) {
+                $grid->model()->uncompleted();
+            }
         }
 
         if ($is_logIn && Auth::user()->can('view-agent-issue')) {
@@ -243,7 +246,7 @@ class ReportController extends Controller
                 ->like('content', trans('app.issue.content'))
                 ->placeholder('');
 
-                if (Auth::user() && !Auth::user()->can('view-agent-issue')) {
+                if ((Auth::user() && !Auth::user()->can('view-agent-issue'))|| $completed) {
                     $filter
                         ->equal('prefecture_id', trans('app.issue.pref'))
                         ->select(Prefecture::getPrefectureOptions());

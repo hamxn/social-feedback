@@ -11,7 +11,6 @@
 
     <script src="{{ Admin::jQuery() }}"></script>
 
-    @if (!Admin::user())
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="/vendor/laravel-admin/AdminLTE/plugins/iCheck/all.css">
     <link rel="stylesheet" href="/vendor/laravel-admin/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.css">
@@ -34,7 +33,6 @@
     <link rel="stylesheet" href="/vendor/laravel-admin/bootstrap3-editable/css/bootstrap-editable.css">
     <link rel="stylesheet" href="/vendor/laravel-admin/google-fonts/fonts.css">
     <link rel="stylesheet" href="/vendor/laravel-admin/AdminLTE/dist/css/AdminLTE.min.css">
-    @endif
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -67,7 +65,6 @@
 <!-- REQUIRED JS SCRIPTS -->
 {!! Admin::js() !!}
 
-@if (!Admin::user())
 <script src="/vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/laravel-admin/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="/vendor/laravel-admin/AdminLTE/dist/js/app.min.js"></script>
@@ -92,7 +89,6 @@
 <script src="/vendor/laravel-admin/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
 <script src="/vendor/laravel-admin/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js"></script>
 <script src="/vendor/laravel-admin/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js"></script>
-@endif
 
 </body>
 </html>
