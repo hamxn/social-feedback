@@ -35,6 +35,23 @@ use App\Models\Prefecture;
 class UserController extends Controller
 {
     /**
+     * Edit interface.
+     *
+     * @param $id
+     *
+     * @return Content
+     */
+    public function edit($id, Content $content)
+    {
+        $form = $this->form()->edit($id);
+        $form = $this->fillRole($form, $id);
+        return $content
+            ->header(trans('admin.administrator'))
+            ->description(trans('admin.edit'))
+            ->body($form);
+    }
+
+    /**
      * Make a form builder.
      *
      * @return Form
@@ -83,6 +100,18 @@ class UserController extends Controller
         $form->display('created_at', trans('admin.created_at'));
         $form->display('updated_at', trans('admin.updated_at'));
 
+        $form->footer(function ($footer) {
+
+            // disable `View` checkbox
+            $footer->disableViewCheck();
+
+            // disable `Continue editing` checkbox
+            $footer->disableEditingCheck();
+
+            // disable `Continue Creating` checkbox
+            $footer->disableCreatingCheck();
+        });
+
         $form->saving(
             function (Form $form) {
                 $form->roles = [$form->roles, null];
@@ -94,6 +123,26 @@ class UserController extends Controller
             }
         );
 
+        return $form;
+    }
+
+    /**
+     * Fill role
+     *
+     * @param Form $form
+     * @param int  $id
+     *
+     * @return Form
+     */
+    protected function fillRole($form, $id)
+    {
+        $user = Administrator::find($id);
+        $roles = $user->roles;
+        if (!empty($roles)) {
+            $form->builder()
+                ->field('roles')
+                ->value($roles[0]->id);
+        }
         return $form;
     }
 }
