@@ -65,9 +65,11 @@
 <!-- REQUIRED JS SCRIPTS -->
 {!! Admin::js() !!}
 
+@if (!Auth::user())
 <script src="/vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/laravel-admin/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="/vendor/laravel-admin/AdminLTE/dist/js/app.min.js"></script>
+@endif
 <script src="/vendor/laravel-admin/jquery-pjax/jquery.pjax.js"></script>
 <script src="/vendor/laravel-admin/nprogress/nprogress.js"></script>
 <script src="/vendor/laravel-admin/nestable/jquery.nestable.js"></script>
@@ -89,6 +91,7 @@
 <script src="/vendor/laravel-admin/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
 <script src="/vendor/laravel-admin/fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js"></script>
 <script src="/vendor/laravel-admin/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js"></script>
+
 
 </body>
 </html>
