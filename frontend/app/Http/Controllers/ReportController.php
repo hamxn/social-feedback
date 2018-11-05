@@ -145,6 +145,8 @@ class ReportController extends Controller
 
         $is_logIn = Auth::user() ? true : false;
 
+        $grid->model()->latest('updated_at');
+
         if ($is_logIn && Auth::user()->can('view-my-issue')) {
             $grid->model()->my();
             if (!isset(request()->status) && $completed == false) {
@@ -221,6 +223,7 @@ class ReportController extends Controller
                 }
             );
         $grid->created_at(trans('app.issue.create_at'));
+        $grid->updated_at(trans('app.issue.update_at'));
     }
 
     /**
