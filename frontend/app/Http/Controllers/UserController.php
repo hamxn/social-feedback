@@ -116,7 +116,7 @@ class UserController extends Controller
             function (Form $form) {
                 $form->roles = [$form->roles, null];
                 if ($form->password
-                    && $form->model()->password != bcrypt($form->password)
+                    && $form->model()->password != $form->password
                 ) {
                     $form->password = bcrypt($form->password);
                 }
