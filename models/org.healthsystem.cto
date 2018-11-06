@@ -1,12 +1,5 @@
 namespace org.healthsystem
-/*
-enum ComplaintStatus {
-  o OPEN: 1 
-  //o PENDING
-  o IN_PROGRESS: 2
-  o REJECTED: 3
-  o RESOLVED: 4
-}
+
 /**
  * The production type associated with an complaint
  */
@@ -17,8 +10,7 @@ enum ComplaintType {
 asset Complaint identified by complaintId {
   o String complaintId
   o String title regex=/^(?!\s*$).+/
-  o String cityId regex=/^(?!\s*$).+/
-  o String prefectureId regex=/^(?!\s*$).+/
+  o String prefectureId
   o String content optional 
   o String address  
   o String imagePath optional
@@ -28,42 +20,12 @@ asset Complaint identified by complaintId {
   o DateTime dateUpdateIssue optional
   o Integer status default=0 range=[0,3]
   o ComplaintType type
-  --> DepartmentOfHealth[] resolvers // this is user update latest
+  o String[] resolvers // this is user update latest
 }
 
-abstract participant Goverment identified by userId {
-  o String userId
-}
-
-participant MinistryOfHealth extends Goverment {
-  o String firstName
-  o String lastName
-}
-
-participant DepartmentOfHealth extends Goverment {
-  o String firstName
-  o String lastName
-}
-  
-participant Citizen identified by userId {
-  o String userId
-  o String firstName
-  o String lastName
-}
-
-/**
- * An abstract transaction for change status of complaint
- */
-abstract transaction ChangeStatus{
-  // o String[] logs optional
-}
-
-/**
- * A transaction for Citizen open complaint
- */
-transaction OpenComplaint extends ChangeStatus {
+transaction OpenComplaint {
+    o String complaintId
     o String title
-    o String cityId
     o String prefectureId
     o String content 
     o String address  
@@ -78,8 +40,8 @@ transaction OpenComplaint extends ChangeStatus {
 /**
  * A transaction for Department change status open complaint
  */
-transaction UpdateStatusComplaint extends ChangeStatus {
-  --> Complaint complaint
-  --> DepartmentOfHealth resolver
+transaction UpdateStatusComplaint {
+  o String complaintId
+  o String resolver
   o Integer status
 }
