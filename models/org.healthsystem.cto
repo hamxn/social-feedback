@@ -1,47 +1,15 @@
 namespace org.healthsystem
 
-/**
- * The production type associated with an complaint
- */
-enum ComplaintType {
-  o VSATTP
-}
-
-asset Complaint identified by complaintId {
-  o String complaintId
-  o String title regex=/^(?!\s*$).+/
-  o String prefectureId
-  o String content optional 
+asset Complaint identified by id {
+  o String id
+  o String title
+  o String prefecture_id
+  o String content 
   o String address  
-  o String imagePath optional
-  o String imageHash optional
-  o String issuerId	
-  o DateTime dateCreateIssue
-  o DateTime dateUpdateIssue optional
+  o String image_path 
+  o String image_hash
+  o String issuer_id	
+  o DateTime update_at
+  o DateTime create_at
   o Integer status default=0 range=[0,3]
-  o ComplaintType type
-  o String[] resolvers // this is user update latest
-}
-
-transaction OpenComplaint {
-    o String complaintId
-    o String title
-    o String prefectureId
-    o String content 
-    o String address  
-    o String imagePath optional
-    o String imageHash optional
-    o String issuerId
-    o DateTime dateCreateIssue 
-    o DateTime dateUpdateIssue optional
-    o Integer status
-}
-
-/**
- * A transaction for Department change status open complaint
- */
-transaction UpdateStatusComplaint {
-  o String complaintId
-  o String resolver
-  o Integer status
 }

@@ -3,7 +3,7 @@
     "composer": "^0.20.2"
   },
   "name": "social-feedback",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Get complaint from citizen about VSANTP",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/social-feedback.bna",
@@ -32,5 +32,8 @@
     "nyc": "latest",
     "mkdirp": "latest",
     "mocha": "latest"
+  },
+  "dependencies": {
+    "generator-hyperledger-composer": "^0.20.4"
   }
 }
