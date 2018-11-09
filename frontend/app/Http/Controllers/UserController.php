@@ -93,7 +93,7 @@ class UserController extends Controller
                 'required_if:roles,' . config('myconfig.roles.text.AGENT'),
                 [
                     'required_if' =>
-                        'The Prefecture field is required when roles is Agent.'
+                        'The Prefecture field is required when role is Agent.'
                 ]
             );
 
