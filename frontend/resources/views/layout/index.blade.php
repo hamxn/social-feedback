@@ -69,7 +69,6 @@
 <script src="/vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/laravel-admin/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="/vendor/laravel-admin/AdminLTE/dist/js/app.min.js"></script>
-@endif
 <script src="/vendor/laravel-admin/jquery-pjax/jquery.pjax.js"></script>
 <script src="/vendor/laravel-admin/nprogress/nprogress.js"></script>
 <script src="/vendor/laravel-admin/nestable/jquery.nestable.js"></script>
@@ -77,6 +76,7 @@
 <script src="/vendor/laravel-admin/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <script src="/vendor/laravel-admin/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="/vendor/laravel-admin/laravel-admin/laravel-admin.js"></script>
+@endif
 <script src="/vendor/laravel-admin/AdminLTE/plugins/iCheck/icheck.min.js"></script>
 <script src="/vendor/laravel-admin/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <script src="/vendor/laravel-admin/AdminLTE/plugins/input-mask/jquery.inputmask.bundle.min.js"></script>
