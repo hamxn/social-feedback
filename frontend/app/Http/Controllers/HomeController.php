@@ -49,7 +49,7 @@ class HomeController extends Controller
                     $row->column(
                         6,
                         function (Column $column) {
-                            $issues = Issue::getLandingPageInfo();
+                            $issues = (new Issue)->getLandingPageInfo();
                             $column->append(view('dashboard', compact('issues')));
                         }
                     );

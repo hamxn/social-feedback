@@ -16,6 +16,16 @@ class Client
     protected $path;
 
     /**
+     * Const Success
+     */
+    const SUCCESS = 1;
+
+    /**
+     * Const Faild
+     */
+    const FAILD = 0;
+
+    /**
      * Constructor
      *
      * @param string $domain
@@ -25,45 +35,59 @@ class Client
         $this->domain = $domain;
     }
 
+    /**
+     * Set path
+     *
+     * @param string $path
+     */
     public function setPath($path)
     {
         $this->path = $path;
     }
 
     /**
-     * Obtain private data of specified Id or list item
+     * Obtain data of specified Id or list item
      *
-     * @param int|null $id private data ID
+     * @param string|null $id data ID
      * @param array $options
      * @return array
      */
     public function get($id = null, $options = [])
     {
         $uri = ($id) ? $this->getSpecifiedUri($id) : $this->getUri();
-        
-        $request = new Request('GET', (string)$uri, ['json' => $options]);
 
-        return json_decode((new HttpClient)->send($request)->getBody(), true);
+        $filter = [];
+        if (!empty($options)) {
+            $filter = ['filter' => json_encode(['where'=>$options])];
+        }
+        
+        $request = new Request('GET', (string)$uri, $filter);
+
+        try {
+            return json_decode((new HttpClient)->send($request)->getBody(), true);
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
     /**
      * Save data of specified id
      *
-     * @param string $id data ID
      * @param array $data
+     * @param string|null $id data ID
      * @return integer 1: OK 0: FAILD
      */
     public function post(array $data, $id = null)
     {
         $uri = ($id) ? $this->getSpecifiedUri($id) : $this->getUri();
 
-        $request = new Request('POST', (string)$uri, [], json_encode($data));
+        $response = (new HttpClient)->request($id ? 'PUT' : 'POST', $uri, ['json' => $data]);
 
-        return (new HttpClient)->send($request)->getBody();
+        return $response->getStatusCode() !== 200 ? self::FAILD : self::SUCCESS;
     }
 
     /**
-     * Get List URI
+     * Get URI
      *
      * @return string
      */
@@ -81,15 +105,5 @@ class Client
     protected function getSpecifiedUri($id)
     {
         return (new Uri($this->domain . $this->path . '/' . $id));
-    }
-
-    /**
-     * Get open URI
-     *
-     * @return string
-     */
-    protected function getOpenUri()
-    {
-        return (new Uri($this->domain . 'Open' . $this->path));
     }
 }

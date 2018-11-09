@@ -26,12 +26,10 @@ Route::group(
         $router->put('auth/setting', 'AuthController@putSetting');
         
         $router->get('reports/completed', 'ReportController@completed');
-        $router->get('reports/completed/{id}', 'ReportController@completedDetail')
-            ->where(['id' => '\d+']);
+        $router->get('reports/completed/{id}', 'ReportController@completedDetail');
         $router->resource('reports', 'ReportController')
             ->except('destroy');
-        $router->post('reports/update_status/{id}', 'ReportController@updateStatus')
-            ->where(['id' => '\d+']);
+        $router->post('reports/update_status/{id}', 'ReportController@updateStatus');
     }
 );
 

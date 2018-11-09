@@ -126,7 +126,7 @@ class ReportController extends Controller
     public function updateStatus($id)
     {
         Permission::check('update-issue');
-        $report = Issue::agent()->findOrFail($id);
+        $report = (new Issue)->agent()->findOrFail($id);
         $report->status = request()->status;
         $report->save();
         return redirect(admin_base_path('reports'));
@@ -145,7 +145,7 @@ class ReportController extends Controller
 
         $is_logIn = Auth::user() ? true : false;
 
-        $grid->model()->latest('updated_at');
+        // $grid->model()->latest('updated_at');
 
         if ($is_logIn && Auth::user()->can('view-my-issue')) {
             $grid->model()->my();
@@ -173,7 +173,8 @@ class ReportController extends Controller
         $this->gridFilter($grid, $completed);
 
         // Pagination
-        $grid->paginate(config('myconfig.perPage'));
+        // $grid->paginate(config('myconfig.perPage'));
+        $grid->disablePagination();
 
         $grid->actions(
             function ($actions) {
@@ -337,18 +338,18 @@ class ReportController extends Controller
      */
     protected function detail($id, $completed = false)
     {
-        $query = Issue::my();
+        $query = (new Issue)->my();
         $is_logIn = Auth::user() ? true : false;
         if ($is_logIn && Auth::user()->can('view-agent-issue')) {
-            $query = Issue::agent();
+            $query = (new Issue)->agent();
         }
         
         if ($completed) {
-            $query = Issue::completed();
+            $query = (new Issue)->completed();
         }
 
         Form::registerBuiltinFields();
-        $form = new Form(Issue::findOrFail($id));
+        $form = new Form((new Issue)->findOrFail($id));
         if (!$is_logIn || !Auth::user()->can('view-all-issue')) {
             $form = new Form($query->findOrFail($id));
         }

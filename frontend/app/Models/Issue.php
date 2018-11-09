@@ -30,6 +30,17 @@ class Issue extends Model
     use Chain;
 
     /**
+     * @var array $fillable
+     */
+    protected $fillable =
+        ['id', 'title', 'prefecture_id', 'content', 'address', 'issuer_id', 'created_at', 'updated_at', 'status'];
+
+    /**
+     * @var bool $incrementing
+     */
+    public $incrementing = false;
+
+    /**
      * Constant STATUS_OPEN
      *
      * @var const STATUS_OPEN
@@ -123,9 +134,10 @@ class Issue extends Model
      *
      * @return object query
      */
-    public function scopeMy($query)
+    public function my()
     {
-        return $query->where('issuer_id', '=', Auth::id());
+        $this->where(['issuer_id' => Auth::id()]);
+        return $this;
     }
 
     /**
@@ -135,13 +147,10 @@ class Issue extends Model
      *
      * @return object query
      */
-    public function scopeAgent($query)
+    public function agent()
     {
-        return $query->where(
-            'prefecture_id',
-            '=',
-            Auth::user()->prefecture_id
-        );
+        $this->where(['prefecture_id' => Auth::user()->prefecture_id]);
+        return $this;
     }
 
     /**
@@ -151,15 +160,15 @@ class Issue extends Model
      *
      * @return object query
      */
-    public function scopeCompleted($query)
+    public function completed()
     {
-        return $query->whereIn(
-            'status',
-            [
-                self::STATUS_RESOLVED,
-                self::STATUS_REJECT
+        $this->where([
+            'or' => [
+                ['status' => self::STATUS_RESOLVED],
+                ['status' => self::STATUS_REJECT],
             ]
-        );
+        ]);
+        return $this;
     }
 
     /**
@@ -169,15 +178,15 @@ class Issue extends Model
      *
      * @return object query
      */
-    public function scopeUncompleted($query)
+    public function uncompleted()
     {
-        return $query->whereIn(
-            'status',
-            [
-                self::STATUS_OPEN,
-                self::STATUS_INPROGRESS
+        $this->where([
+            'or' => [
+                ['status' => self::STATUS_OPEN],
+                ['status' => self::STATUS_INPROGRESS],
             ]
-        );
+        ]);
+        return $this;
     }
 
     /**
@@ -200,89 +209,63 @@ class Issue extends Model
      *
      * @return array $res info
      */
-    public static function getLandingPageInfo()
+    public function getLandingPageInfo()
     {
-        $total_query = self::statisticalQuery(self::TOTAL);
-        $open_query = self::statisticalQuery(self::STATUS_OPEN);
-        $inprogress_query = self::statisticalQuery(self::STATUS_INPROGRESS);
-        $resolved_query = self::statisticalQuery(self::STATUS_RESOLVED);
-        $reject_query = self::statisticalQuery(self::STATUS_REJECT);
-        $info = $total_query->union($open_query)
-            ->union($inprogress_query)
-            ->union($resolved_query)
-            ->union($reject_query)
-            ->get();
+        $all = $this->get();
         $res = [];
-        foreach ($info as $row) {
-            $res[$row['prefecture_id']]['name'] = $res[$row['prefecture_id']]['name']
-                ?? Prefecture::getPrefNameByPrefId($row['prefecture_id']);
-            $res[$row['prefecture_id']]['total'] = $row['total']
-                ? $row['total']
-                : ($res[$row['prefecture_id']]['total'] ?? 0);
-            $res[$row['prefecture_id']]['open'] = $row['open_status']
-                ? $row['open_status']
-                : ($res[$row['prefecture_id']]['open'] ?? 0);
-            $res[$row['prefecture_id']]['inprogress'] = $row['inprogress_status']
-                ? $row['inprogress_status']
-                : ($res[$row['prefecture_id']]['inprogress'] ?? 0);
-            $res[$row['prefecture_id']]['resolved'] = $row['resolved_status']
-                ? $row['resolved_status']
-                : ($res[$row['prefecture_id']]['resolved'] ?? 0);
-            $res[$row['prefecture_id']]['reject'] = $row['reject_status']
-                ? $row['reject_status']
-                : ($res[$row['prefecture_id']]['reject'] ?? 0);
+        foreach ($all as $issue) {
+            $res[$issue->prefecture_id]['name'] = $res[$issue->prefecture_id]['name']
+                ?? Prefecture::getPrefNameByPrefId($issue->prefecture_id);
+            $res[$issue->prefecture_id]['total'] = isset($res[$issue->prefecture_id]['total'])
+                ? $res[$issue->prefecture_id]['total'] + 1 : 1;
+            if ($issue->status == self::STATUS_OPEN) {
+                $res[$issue->prefecture_id]['open'] = isset($res[$issue->prefecture_id]['open'])
+                ? $res[$issue->prefecture_id]['open'] + 1 : 1;
+            } else {
+                $res[$issue->prefecture_id]['open'] = $res[$issue->prefecture_id]['open'] ?? 0;
+            }
+
+            if ($issue->status == self::STATUS_INPROGRESS) {
+                $res[$issue->prefecture_id]['inprogress'] = isset($res[$issue->prefecture_id]['inprogress'])
+                ? $res[$issue->prefecture_id]['inprogress'] + 1 : 1;
+            } else {
+                $res[$issue->prefecture_id]['inprogress'] = $res[$issue->prefecture_id]['inprogress'] ?? 0;
+            }
+
+            if ($issue->status == self::STATUS_RESOLVED) {
+                $res[$issue->prefecture_id]['resolved'] = isset($res[$issue->prefecture_id]['resolved'])
+                ? $res[$issue->prefecture_id]['resolved'] + 1 : 1;
+            } else {
+                $res[$issue->prefecture_id]['resolved'] = $res[$issue->prefecture_id]['resolved'] ?? 0;
+            }
+
+            if ($issue->status == self::STATUS_REJECT) {
+                $res[$issue->prefecture_id]['reject'] = isset($res[$issue->prefecture_id]['reject'])
+                ? $res[$issue->prefecture_id]['reject'] + 1 : 1;
+            } else {
+                $res[$issue->prefecture_id]['reject'] = $res[$issue->prefecture_id]['reject'] ?? 0;
+            }
         }
         return $res;
     }
 
     /**
-     * Get statistical query
+     * Get path
      *
-     * @param int $type query type
-     *
-     * @return Builder $query statistical query
+     * @return string
      */
-    protected static function statisticalQuery($type)
-    {
-        $total      = '0 as total';
-        $open       = '0 as open_status';
-        $inprogress = '0 as inprogress_status';
-        $resolved   = '0 as resolved_status';
-        $reject     = '0 as reject_status';
-
-        switch ($type) {
-            case self::STATUS_OPEN:
-                $open = 'count(*) as open_status';
-                break;
-            case self::STATUS_INPROGRESS:
-                $inprogress = 'count(*) as inprogress_status';
-                break;
-            case self::STATUS_RESOLVED:
-                $resolved = 'count(*) as resolved_status';
-                break;
-            case self::STATUS_REJECT:
-                $reject = 'count(*) as reject_status';
-                break;
-            default:
-                $total = 'count(*) as total';
-                break;
-        }
-        $select = 'prefecture_id,'
-            . $total . ','
-            . $open . ','
-            . $inprogress . ','
-            . $resolved . ','
-            . $reject;
-        $query = Issue::select(\DB::raw($select));
-        if ($type != self::TOTAL) {
-            $query->where('status', '=', $type);
-        }
-        $query->groupBy('prefecture_id');
-        return $query;
-    }
-
     public static function getPath()
     {
-        return 'Complaint';
+        return 'complaint';
+    }
+
+    /**
+     * Get Chain class
+     *
+     * @return string
+     */
+    protected function getChainClass()
+    {
+        return 'org.healthsystem.complaint';
     }
 }

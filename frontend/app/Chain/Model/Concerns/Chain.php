@@ -12,49 +12,34 @@ use Illuminate\Support\Arr;
  */
 trait Chain
 {
-    protected $resolved = false;
-
+    /**
+     * @var array where
+     */
     protected $whereArray = [];
 
+    /**
+     * Add to where array
+     *
+     * @param array $where
+     */
     public function where($where)
     {
-        $this->whereArray = array_merge($where, $this->whereArray);
+        if (empty($this->whereArray)) {
+            $this->whereArray = $where;
+        } else {
+            $this->whereArray = ['and' => [$this->whereArray, $where]];
+        }
     }
 
     /**
      * Get id for private information
      * This id can be available after record is published.
      *
-     * @return Chain\Entity
+     * @return string
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set id for private information
-     *
-     * @return Chain\Entity
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * Obtain private information from API
-     *
-     * @return Chain\Entity
-     */
-    public function getPrivateInfo()
-    {
-        if (!$this->resolved) {
-            $data = $this->callGetApi($this->getId());
-            $this->resolve($data);
-        }
-
-        return $this->entity;
     }
 
 
@@ -70,26 +55,28 @@ trait Chain
         return \Chain::get($id, compact('who'));
     }
 
+    /**
+     * Set path
+     */
     public static function setPath($path)
     {
-        return \Chain::setPath($path);
+        \Chain::setPath($path);
     }
 
     /**
      * Call POST API
      *
-     * @param string $id
      * @param array $data
-     * @param string $who who paramater
+     * @param string|null $id
      * @return boolean
      */
-    public function callPostApi($id, $data)
+    public function callPostApi($data, $id = null)
     {
-        return \Chain::post($id, $data);
+        return \Chain::post($data, $id);
     }
 
     /**
-     * Save pvrivate information to Chain API with trigger for saved event
+     * Save information to Chain API
      *
      * @throws Exception if saving data to API fails, exeption will be thrown
      * @return boolean true
@@ -102,14 +89,22 @@ trait Chain
 
         $this->assignDate();
 
+        $isCreate = false;
         if (!$this->id) {
-            $this->publishId();
-            $success = $this->callPostApi($this->toArray());
-        } else {
-            $success = $this->callPostApi($this->toArray(), $this->id);
+            $id = $this->publishId();
+            $isCreate = true;
         }
 
-        
+        self::setPath(self::getPath());
+
+        $data = $this->toArray();
+        $data['id'] = $id ?? $this->id;
+        $data['$class'] = $this->getChainClass();
+
+        $success = $isCreate ? $this->callPostApi($data)
+            : $this->callPostApi($data, $this->id);
+
+
         if (!$success) {
             throw new \Exception('Could not save data.');
         }
@@ -125,24 +120,54 @@ trait Chain
      * @param  array|mixed  $columns
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public static function all($columns = ['*'])
+    public function get($columns = ['*'])
     {
         self::setPath(self::getPath());
-        return \Chain::get();
+        $res = \Chain::get(null, $this->whereArray);
+        $list = [];
+        foreach ($res as $item) {
+            $item['created_at'] = isset($item['created_at'])
+                ? $this->transDate($item['created_at'])
+                : '1970-01-01 00:00:00';
+            $item['updated_at'] = isset($item['updated_at'])
+                ? $this->transDate($item['updated_at'])
+                : '1970-01-01 00:00:00';
+            
+            $object = clone $this;
+            $object->fill($item);
+            $list[] = $object;
+        }
+        return $this->newCollection($list);
     }
 
-    protected function publishPid()
+    /**
+     * Trans chain date
+     *
+     * @param string $string chain date
+     * @return string
+     */
+    protected function transDate($string)
+    {
+        return date('Y-m-d H:i:s', strtotime($string));
+    }
+
+    /**
+     * Publish id
+     *
+     * @return string $id
+     */
+    protected function publishId()
     {
         if (!$id = $this->getId()) {
             $id = $this->createId();
-            $this->setId($id);
         }
+        return $id;
     }
 
     /**
      * Create id for associating database and API
      *
-     * @return Fsboss\Entity
+     * @return string
      */
     protected function createId()
     {
@@ -155,11 +180,61 @@ trait Chain
         return sprintf('%s-%s-%s', $class, $this->issuer_id, time());
     }
 
+    /**
+     * Assign date
+     */
     protected function assignDate()
     {
         $this->updated_at = date('Y-m-d H:i:s');
         if (!$this->created_at) {
             $this->created_at = $this->updated_at;
         }
+    }
+
+    /**
+     * Find a model by its primary key or throw an exception.
+     *
+     * @param  mixed  $id
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static|static[]
+     *
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     */
+    public function findOrFail($id, $columns = ['*'])
+    {
+        $result = $this->find($id, $columns);
+
+        if (! is_null($result)) {
+            return $result;
+        }
+
+        throw (new \Illuminate\Database\Eloquent\ModelNotFoundException)
+            ->setModel(get_class($this), $id);
+    }
+
+    /**
+     * Find a model by its primary key.
+     *
+     * @param  mixed  $id
+     * @param  array  $columns
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null
+     */
+    public function find($id, $columns = ['*'])
+    {
+        self::setPath(self::getPath());
+        $item = \Chain::get($id, $this->whereArray);
+        if ($item) {
+            $item['created_at'] = isset($item['created_at'])
+                ? $this->transDate($item['created_at'])
+                : '1970-01-01 00:00:00';
+            $item['updated_at'] = isset($item['updated_at'])
+                ? $this->transDate($item['updated_at'])
+                : '1970-01-01 00:00:00';
+            
+            $object = clone $this;
+            $object->fill($item);
+            return $object;
+        }
+        return null;
     }
 }
