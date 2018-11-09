@@ -13,6 +13,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Chain\Model\Concerns\Chain;
 
 /**
  * Class Issue
@@ -26,6 +27,8 @@ use Illuminate\Support\Facades\Auth;
  */
 class Issue extends Model
 {
+    use Chain;
+
     /**
      * Constant STATUS_OPEN
      *
@@ -276,5 +279,10 @@ class Issue extends Model
         }
         $query->groupBy('prefecture_id');
         return $query;
+    }
+
+    public static function getPath()
+    {
+        return 'Complaint';
     }
 }

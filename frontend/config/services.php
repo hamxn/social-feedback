@@ -35,4 +35,7 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'chain' => [
+        'domain' => 'https://complant-system-api.eu-gb.mybluemix.net/api/',
+    ],
 ];

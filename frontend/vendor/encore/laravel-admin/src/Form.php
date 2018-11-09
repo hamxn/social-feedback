@@ -745,7 +745,6 @@ class Form implements Renderable
                     }
                     break;
                 case Relations\HasOne::class:
-
                     $related = $this->model->$name;
 
                     // if related is empty
@@ -761,7 +760,6 @@ class Form implements Renderable
                     $related->save();
                     break;
                 case Relations\BelongsTo::class:
-
                     $parent = $this->model->$name;
 
                     // if related is empty
@@ -795,7 +793,6 @@ class Form implements Renderable
                     break;
                 case Relations\HasMany::class:
                 case Relations\MorphMany::class:
-
                     foreach ($prepared[$name] as $related) {
                         /** @var Relations\Relation $relation */
                         $relation = $this->model()->$name();

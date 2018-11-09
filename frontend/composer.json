@@ -9,7 +9,8 @@
         "encore/laravel-admin": "^1.6",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "guzzlehttp/guzzle": "~6.3"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -27,7 +28,8 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Encore\\Admin\\": "app/overrides"
+            "Encore\\Admin\\": "app/overrides",
+            "Lftv\\Chain\\": "app/Packages/Chain/src/"
         }
     },
     "autoload-dev": {
