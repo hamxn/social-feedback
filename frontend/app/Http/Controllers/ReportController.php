@@ -170,7 +170,8 @@ class ReportController extends Controller
         $this->gridDisplay($grid);
 
         // Define for filter form
-        $this->gridFilter($grid, $completed);
+        // $this->gridFilter($grid, $completed);
+        $grid->disableFilter();
 
         // Pagination
         // $grid->paginate(config('myconfig.perPage'));
@@ -242,13 +243,13 @@ class ReportController extends Controller
             function ($filter) use ($completed) {
                 $filter->disableIdFilter();
 
-                $filter
-                ->like('title', trans('app.issue.title'))
-                ->placeholder('');
+                // $filter
+                // ->like('title', trans('app.issue.title'))
+                // ->placeholder('');
 
-                $filter
-                ->like('content', trans('app.issue.content'))
-                ->placeholder('');
+                // $filter
+                // ->like('content', trans('app.issue.content'))
+                // ->placeholder('');
 
                 if ((Auth::user() && !Auth::user()->can('view-agent-issue'))|| $completed) {
                     $filter
@@ -256,9 +257,9 @@ class ReportController extends Controller
                         ->select(Prefecture::getPrefectureOptions());
                 }
 
-                $filter
-                ->like('address', trans('app.issue.address'))
-                ->placeholder('');
+                // $filter
+                // ->like('address', trans('app.issue.address'))
+                // ->placeholder('');
 
                 $statusOptions = Issue::statusOptions();
 
@@ -269,7 +270,7 @@ class ReportController extends Controller
                 $filter->equal('status', trans('app.issue.status'))
                     ->select($statusOptions);
 
-                $filter->between('created_at', 'Created at')->datetime();
+                // $filter->between('created_at', 'Created at')->datetime();
             }
         );
     }
@@ -343,7 +344,7 @@ class ReportController extends Controller
         if ($is_logIn && Auth::user()->can('view-agent-issue')) {
             $query = (new Issue)->agent();
         }
-        
+
         if ($completed) {
             $query = (new Issue)->completed();
         }
@@ -371,7 +372,7 @@ class ReportController extends Controller
             ->value($form->model()->address);
 
         $issue = $form->model();
-        
+
         if ($issue->image_path) {
             $disk = config('admin.upload.disk');
             $image_hash = md5(Storage::disk($disk)->get($issue->image_path));
