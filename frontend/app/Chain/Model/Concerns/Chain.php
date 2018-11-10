@@ -108,7 +108,7 @@ trait Chain
         if (!$success) {
             throw new \Exception('Could not save data.');
         }
-        
+
         $this->finishSave($options);
 
         return true;
@@ -125,17 +125,19 @@ trait Chain
         self::setPath(self::getPath());
         $res = \Chain::get(null, $this->whereArray);
         $list = [];
-        foreach ($res as $item) {
-            $item['created_at'] = isset($item['created_at'])
-                ? $this->transDate($item['created_at'])
-                : '1970-01-01 00:00:00';
-            $item['updated_at'] = isset($item['updated_at'])
-                ? $this->transDate($item['updated_at'])
-                : '1970-01-01 00:00:00';
-            
-            $object = clone $this;
-            $object->fill($item);
-            $list[] = $object;
+        if ($res) {
+            foreach ($res as $item) {
+                $item['created_at'] = isset($item['created_at'])
+                    ? $this->transDate($item['created_at'])
+                    : '1970-01-01 00:00:00';
+                $item['updated_at'] = isset($item['updated_at'])
+                    ? $this->transDate($item['updated_at'])
+                    : '1970-01-01 00:00:00';
+
+                $object = clone $this;
+                $object->fill($item);
+                $list[] = $object;
+            }
         }
         return $this->newCollection($list);
     }
@@ -230,7 +232,7 @@ trait Chain
             $item['updated_at'] = isset($item['updated_at'])
                 ? $this->transDate($item['updated_at'])
                 : '1970-01-01 00:00:00';
-            
+
             $object = clone $this;
             $object->fill($item);
             return $object;
