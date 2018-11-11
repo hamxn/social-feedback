@@ -1,0 +1,85 @@
+{
+  "name": "Complaint",
+  "description": "An asset named Complaint",
+  "plural": "Complaint",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true,
+    "composer": {
+      "type": "asset",
+      "namespace": "org.healthsystem",
+      "name": "Complaint",
+      "fqn": "org.healthsystem.Complaint",
+      "abstract": false
+    }
+  },
+  "properties": {
+    "$class": {
+      "type": "string",
+      "default": "org.healthsystem.Complaint",
+      "required": false,
+      "description": "The class identifier for this type"
+    },
+    "complaintId": {
+      "type": "string",
+      "id": true,
+      "description": "The instance identifier for this type",
+      "required": true
+    },
+    "titile": {
+      "type": "string",
+      "required": true
+    },
+    "Address": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "string",
+      "required": false
+    },
+    "images": {
+      "type": "string",
+      "required": false
+    },
+    "dataCreateIssue": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "PENDDING",
+        "INGROGRESS",
+        "REJECTED",
+        "DONE"
+      ],
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VSATTP"
+      ],
+      "required": true
+    },
+    "owner": {
+      "type": "any",
+      "description": "The identifier of an instance of owner",
+      "required": true
+    },
+    "resolver": {
+      "type": [
+        "any"
+      ],
+      "description": "The identifier of an instance of resolver",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,60 @@
+{
+  "name": "UpdateStatusComplaint",
+  "description": "A transaction named UpdateStatusComplaint",
+  "plural": "UpdateStatusComplaint",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true,
+    "composer": {
+      "type": "transaction",
+      "namespace": "org.healthsystem",
+      "name": "UpdateStatusComplaint",
+      "fqn": "org.healthsystem.UpdateStatusComplaint",
+      "abstract": false
+    }
+  },
+  "properties": {
+    "$class": {
+      "type": "string",
+      "default": "org.healthsystem.UpdateStatusComplaint",
+      "required": false,
+      "description": "The class identifier for this type"
+    },
+    "complaint": {
+      "type": "any",
+      "description": "The identifier of an instance of complaint",
+      "required": true
+    },
+    "resolver": {
+      "type": [
+        "any"
+      ],
+      "description": "The identifier of an instance of resolver",
+      "required": true
+    },
+    "logs": {
+      "type": [
+        "string"
+      ],
+      "default": [],
+      "required": false
+    },
+    "transactionId": {
+      "type": "string",
+      "id": true,
+      "description": "The instance identifier for this type",
+      "required": false,
+      "generated": true
+    },
+    "timestamp": {
+      "type": "date",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": [],
+  "forceId": true
+}
