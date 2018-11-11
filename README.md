@@ -70,5 +70,5 @@ REST server `=> http://localhost:3000`
 Angular application `=> http://localhost:4200`
 
 ### Deploy Rest Server on Cloud Foundry Applications
- $ bluemix cf push "${CF_APP}" --docker-image hyperledger/composer-rest-server:0.20.4 -c "npm install -g @ampretia/composer-wallet-cloudant; composer-rest-server -c admin@social-feedback -n never -w true" -i 1 -m 512M --no-start --no-manifest
- $ bluemix cf start "${CF_APP}"
+ `$ bluemix cf push "${CF_APP}" --docker-image hyperledger/composer-rest-server:0.20.4 -c "npm install -g @ampretia/composer-wallet-cloudant; composer-rest-server -c admin@social-feedback -n never -w true" -i 1 -m 512M --no-start --no-manifest`
+ `$ bluemix cf start "${CF_APP}"`
