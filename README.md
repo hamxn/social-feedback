@@ -69,10 +69,13 @@ Update the version property of package.json from 0.0.1 to 0.0.2
 REST server `=> http://localhost:3000`
 Angular application `=> http://localhost:4200`
 
-### Deploy Rest Server on Cloud Foundry Applications
-
+### Deploy Rest Server to Cloud Foundry Applications
+ 1. Register cloudant wallet service and get credentials
+ 2. Export cloudant wallet to NODE_CONFIG enviroment variable of cloud foundry app
+ 3. Push app to cloud foundry services
+  ```
+ bluemix cf push "${CF_APP}" --docker-image hyperledger/composer-rest-server:0.20.4 -c "npm install -g @ampretia/composer-wallet-cloudant; composer-rest-server -c admin@social-feedback -n never -w true" -i 1 -m 512M --no-start --no-manifest
+cf start "${CF_APP}"
 ```
-bluemix cf push "${CF_APP}" --docker-image hyperledger/composer-rest-server:0.20.4 -c "npm install -g @ampretia/composer-wallet-cloudant; composer-rest-server -c admin@social-feedback -n never -w true" -i 1 -m 512M --no-start --no-manifest
-```
- 
+4. Start rest server
 `bluemix cf start "${CF_APP}"`
