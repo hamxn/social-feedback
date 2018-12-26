@@ -83,7 +83,7 @@ Next generate the Business Network Archive (BNA) file from the root directory:
 
 ```
 cd rest-server
-mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/social-feedback.bna
+mkdir ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/social-feedback.bna
 ```
 
 ## 4. Deploy to Fabric
