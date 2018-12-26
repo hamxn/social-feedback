@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	],
+
+	"settings": {
+        "xdebug": {
+             "url": "http://social-feedback.com",
+             "super_globals": false,
+             "port": 9001,
+        }
+    }
+}

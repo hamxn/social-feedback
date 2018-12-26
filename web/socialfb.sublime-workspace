@@ -1,0 +1,704 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"is_",
+				"is_array"
+			],
+			[
+				"lis",
+				"list_attribute"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"n",
+				"notificators"
+			],
+			[
+				"ech",
+				"echo\techo \"…\""
+			],
+			[
+				"vali",
+				"validResponse"
+			],
+			[
+				"val",
+				"validate"
+			],
+			[
+				"Va",
+				"Validator"
+			],
+			[
+				"pho",
+				"property_photos"
+			],
+			[
+				"cus",
+				"cust_id"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": ".env",
+			"settings":
+			{
+				"buffer_size": 715,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/services.php",
+			"settings":
+			{
+				"buffer_size": 1077,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/ReportController.php",
+			"settings":
+			{
+				"buffer_size": 12637,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Context",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Watch",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "Xdebug Stack",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "=> /Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers/ReportController.php\n\t|+| 113\n=> /Users/macbook/Documents/Project/Review/smoothie/app/Http/Controllers/Frontend/InquireController.php\n\t|+| 19\n\t|+| 56\n",
+			"settings":
+			{
+				"buffer_size": 230,
+				"line_ending": "Unix",
+				"name": "Xdebug Breakpoint",
+				"read_only": true,
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"In",
+				"Package Control: Install Package"
+			],
+			[
+				"P",
+				"Package Control: Install Package"
+			],
+			[
+				"iPa",
+				"Install Package Control"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"xd",
+				"Xdebug: Session - Execute"
+			],
+			[
+				"x",
+				"Xdebug: Session - Execute"
+			],
+			[
+				"Re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"Rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: In",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Package",
+				"Package Control: Install Package"
+			],
+			[
+				"PHP Code Sniffer: phpcs",
+				"PHP Code Sniffer: Switch coding standard"
+			],
+			[
+				"SFTP",
+				"SFTP: Setup Server…"
+			],
+			[
+				"Pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"rsub",
+				"Plugin Development: Convert Syntax to .sublime-syntax"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"xdebug",
+			"import webbrowser; webbrowser.open(\"https//www.google.com\")",
+			"import webbrowser; webbroswer.open(\"https//www.google.com\")",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/macbook/Documents/Blockchain/social-feedback/web",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/config",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/database",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/public",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/resources",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/storage",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/storage/app"
+	],
+	"file_history":
+	[
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Models/Issue.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/helpers.php"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"/reports/completed"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": ".env",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								273,
+								273
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "config/services.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1077,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								994,
+								994
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/ReportController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2658,
+								2658
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1394.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers",
+							"incomplete_sync": null,
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers",
+							"incomplete_sync": null,
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers",
+							"incomplete_sync": null,
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 230,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								230,
+								230
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers",
+							"incomplete_sync": null,
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 134.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				2,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.7,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 61.0
+	},
+	"output.sftp":
+	{
+		"height": 102.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 133.0
+	},
+	"output.xdebug":
+	{
+		"height": 108.0
+	},
+	"pinned_build_system": "",
+	"project": "socialfb.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php",
+				"vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php"
+			],
+			[
+				"fron",
+				"tests/Unit/FrontControllerTextTest.php"
+			],
+			[
+				"Address",
+				"app/Models/Address.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"xdebug":
+		{
+			"hide_conflict": false,
+			"restore_index":
+			{
+				"61":
+				{
+					"group": 0,
+					"index": 0
+				},
+				"63":
+				{
+					"group": 0,
+					"index": 1
+				},
+				"64":
+				{
+					"group": 0,
+					"index": 2
+				},
+				"65":
+				{
+					"group": 0,
+					"index": 5
+				},
+				"70":
+				{
+					"group": 0,
+					"index": 4
+				},
+				"71":
+				{
+					"group": 0,
+					"index": 3
+				}
+			},
+			"restore_layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			}
+		}
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 365.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

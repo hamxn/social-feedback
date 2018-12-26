@@ -44,7 +44,6 @@ Route::group(
         $router->get('register', 'Auth\RegisterController@showRegistrationForm')
             ->name('register');
         $router->post('register', 'Auth\RegisterController@register');
-        $router->get('reports/completed/{id}', 'ReportController@completedDetail')
-            ->where(['id' => '\d+']);
+        $router->get('reports/completed/{id}', 'ReportController@completedDetail');
     }
 );

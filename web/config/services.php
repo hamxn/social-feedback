@@ -36,6 +36,6 @@ return [
     ],
 
     'chain' => [
-        'domain' => 'https://complant-system-api.eu-gb.mybluemix.net/api/',
+        'domain' => 'http://192.168.0.118:3001/api/',
     ],
 ];

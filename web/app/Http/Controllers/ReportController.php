@@ -181,6 +181,7 @@ class ReportController extends Controller
             function ($actions) {
                 $actions->disableDelete();
                 $actions->disableEdit();
+                // $actions->setResource('/reports');
             }
         );
 

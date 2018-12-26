@@ -33,7 +33,7 @@ class Issue extends Model
      * @var array $fillable
      */
     protected $fillable =
-        ['id', 'title', 'prefecture_id', 'content', 'address', 'issuer_id', 'created_at', 'updated_at', 'status'];
+        ['id', 'title', 'prefecture_id', 'content', 'address', 'issuer_id', 'created_at', 'updated_at', 'status', 'image_path', 'image_hash'];
 
     /**
      * @var bool $incrementing
