@@ -83,11 +83,8 @@ Next generate the Business Network Archive (BNA) file from the root directory:
 
 ```
 cd rest-server
-npm install
+mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/social-feedback.bna
 ```
-
-The `composer archive create` command in `package.json` has created a file called `social-feedback@0.1.1.bna`.
-
 
 ## 4. Deploy to Fabric
 
