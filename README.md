@@ -123,7 +123,7 @@ docker rm $(docker ps -aq)
 docker rmi $(docker images dev-* -q)
 ```
 
-All the scripts will be in the directory `/fabric-tools`.  Start fabric and create peer admin card:
+All the scripts will be in the directory `/fabric-dev-server`.  Start fabric and create peer admin card:
 
 ```
 cd fabric-dev-server/
