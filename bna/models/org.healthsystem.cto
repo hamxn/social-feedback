@@ -1,75 +1,25 @@
+/*
+ * Licensed by LFTV
+ */
+
+/**
+ * Write your model definitions here
+ */
+
 namespace org.healthsystem
 
-enum ComplaintStatus {
-  o OPEN
-  o PENDING
-  o IN_PROGRESS
-  o REJECTED
-  o DONE
-}
+asset complaint identified by id {
 
-/**
- * The production type associated with an complaint
- */
-enum ComplaintType {
-  o VSATTP
-}
+  o String id
+  o String title optional
+  o String prefecture_id optional
+  o String content optional
+  o String address optional
+  o String image_path optional
+  o String image_hash optional
+  o String issuer_id optional
+  o DateTime updated_at optional
+  o DateTime created_at optional
+  o Integer status default=0 range=[0,3] optional
 
-asset Complaint identified by complaintId {
-  o String complaintId
-  o String title regex=/^(?!\s*$).+/
-  o String address regex=/^(?!\s*$).+/
-  o String text optional 
-  o String[] images optional
-  o DateTime dataCreateIssue 
-  o ComplaintStatus status
-  o ComplaintType type
-  --> Citizen owner
-  --> DepartmentOfHealth[] resolvers // this is user update latest
-}
-
-abstract participant Goverment identified by userId {
-  o String userId
-}
-
-participant MinistryOfHealth extends Goverment {
-  o String firstName
-  o String lastName
-}
-
-participant DepartmentOfHealth extends Goverment {
-  o String firstName
-  o String lastName
-}
-participant Citizen identified by userId {
-  o String userId
-  o String firstName
-  o String lastName
-}
-
-/**
- * An abstract transaction for change status of complaint
- */
-abstract transaction ChangeStatus{
-  // o String[] logs optional
-}
-
-/**
- * A transaction for Citizen open complaint
- */
-transaction OpenComplaint extends ChangeStatus {
-    o String title
-    o String address
-    o String text optional
-    o String[] images optional
-    --> Citizen issuer
-}
-
-/**
- * A transaction for Department change status open complaint
- */
-transaction UpdateStatusComplaint extends ChangeStatus {
-  --> Complaint complaint
-  --> DepartmentOfHealth resolver
-  o ComplaintStatus status
 }
