@@ -48,20 +48,10 @@
 	"buffers":
 	[
 		{
-			"file": ".env",
+			"file": "vendor/encore/laravel-admin/src/Grid.php",
 			"settings":
 			{
-				"buffer_size": 715,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/services.php",
-			"settings":
-			{
-				"buffer_size": 1077,
-				"encoding": "UTF-8",
+				"buffer_size": 21857,
 				"line_ending": "Unix"
 			}
 		},
@@ -69,8 +59,25 @@
 			"file": "app/Http/Controllers/ReportController.php",
 			"settings":
 			{
-				"buffer_size": 12637,
+				"buffer_size": 12691,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/routes.php",
+			"settings":
+			{
+				"buffer_size": 1645,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "vendor/encore/laravel-admin/src/Grid/Displayers/Actions.php",
+			"settings":
+			{
+				"buffer_size": 4519,
 				"line_ending": "Unix"
 			}
 		},
@@ -108,10 +115,10 @@
 			}
 		},
 		{
-			"contents": "=> /Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers/ReportController.php\n\t|+| 113\n=> /Users/macbook/Documents/Project/Review/smoothie/app/Http/Controllers/Frontend/InquireController.php\n\t|+| 19\n\t|+| 56\n",
+			"contents": "=> /Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers/ReportController.php\n\t|+| 50\n\t|+| 113\n\t|+| 204\n\t|+| 285\n\t|+| 342\n\t|+| 390\n=> /Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Grid/Displayers/Actions.php\n\t|+| 147\n=> /Users/macbook/Documents/Project/Review/smoothie/app/Http/Controllers/Frontend/InquireController.php\n\t|+| 19\n\t|+| 56\n",
 			"settings":
 			{
-				"buffer_size": 230,
+				"buffer_size": 402,
 				"line_ending": "Unix",
 				"name": "Xdebug Breakpoint",
 				"read_only": true,
@@ -240,15 +247,43 @@
 	"expanded_folders":
 	[
 		"/Users/macbook/Documents/Blockchain/social-feedback/web",
-		"/Users/macbook/Documents/Blockchain/social-feedback/web/config",
-		"/Users/macbook/Documents/Blockchain/social-feedback/web/database",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Chain",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Chain/Facades",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Chain/Model",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Chain/Model/Concerns",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers",
 		"/Users/macbook/Documents/Blockchain/social-feedback/web/public",
-		"/Users/macbook/Documents/Blockchain/social-feedback/web/resources",
-		"/Users/macbook/Documents/Blockchain/social-feedback/web/storage",
-		"/Users/macbook/Documents/Blockchain/social-feedback/web/storage/app"
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Grid",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Grid/Displayers",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Layout",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Show",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Traits",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Widgets"
 	],
 	"file_history":
 	[
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Controllers/HasResourceActions.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Grid.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Grid/Exporter.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Grid/Tools.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Exception/Handler.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/Show.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/laravel/framework/src/Illuminate/Support/helpers.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/.env",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/config/services.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers/ReportController.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/overrides/Layout/Content.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php",
+		"/Users/macbook/Library/Application Support/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+		"/Users/macbook/Documents/Blockchain/social-feedback/web/socialfb.sublime-project",
 		"/Users/macbook/Documents/Blockchain/social-feedback/web/app/Models/Issue.php",
 		"/Users/macbook/Documents/Blockchain/social-feedback/web/vendor/encore/laravel-admin/src/helpers.php"
 	],
@@ -269,6 +304,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			");});",
+			");\n",
+			"renderView",
+			"Actions",
+			"actionsCallback",
+			"view",
+			"view-my-issue",
 			"/reports/completed"
 		],
 		"highlight": true,
@@ -292,19 +334,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": ".env",
+					"file": "vendor/encore/laravel-admin/src/Grid.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 715,
+						"buffer_size": 21857,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								273,
-								273
+								133,
+								143
 							]
 						],
 						"settings":
@@ -312,63 +354,32 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4833.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "config/services.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1077,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								994,
-								994
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "app/Http/Controllers/ReportController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12637,
+						"buffer_size": 12691,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2658,
-								2658
+								2657,
+								2657
 							]
 						],
 						"settings":
@@ -381,46 +392,76 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1394.0,
+						"translation.y": 1482.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 3,
+					"buffer": 2,
+					"file": "app/Http/routes.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 1645,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1608,
+								1608
 							]
 						],
 						"settings":
 						{
-							"default_dir": "/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers",
 							"incomplete_sync": null,
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 272.5,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "vendor/encore/laravel-admin/src/Grid/Displayers/Actions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4519,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2422,
+								2432
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1959.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -450,15 +491,9 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 5,
 					"semi_transient": false,
@@ -486,7 +521,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -494,15 +529,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 230,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								230,
-								230
+								0,
+								0
 							]
 						],
 						"settings":
@@ -516,9 +551,49 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								402,
+								402
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Users/macbook/Documents/Blockchain/social-feedback/web/app/Http/Controllers",
+							"incomplete_sync": null,
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
 					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
@@ -569,7 +644,7 @@
 	"menu_visible": true,
 	"output.find_results":
 	{
-		"height": 61.0
+		"height": 127.0
 	},
 	"output.sftp":
 	{
@@ -637,35 +712,35 @@
 			"hide_conflict": false,
 			"restore_index":
 			{
-				"61":
+				"21":
+				{
+					"group": 1,
+					"index": 0
+				},
+				"22":
+				{
+					"group": 1,
+					"index": 1
+				},
+				"23":
+				{
+					"group": 2,
+					"index": 0
+				},
+				"24":
+				{
+					"group": 2,
+					"index": 1
+				},
+				"68":
 				{
 					"group": 0,
 					"index": 0
 				},
-				"63":
+				"69":
 				{
 					"group": 0,
 					"index": 1
-				},
-				"64":
-				{
-					"group": 0,
-					"index": 2
-				},
-				"65":
-				{
-					"group": 0,
-					"index": 5
-				},
-				"70":
-				{
-					"group": 0,
-					"index": 4
-				},
-				"71":
-				{
-					"group": 0,
-					"index": 3
 				}
 			},
 			"restore_layout":
@@ -675,18 +750,32 @@
 					[
 						0,
 						0,
-						1,
+						2,
 						1
+					],
+					[
+						0,
+						1,
+						1,
+						2
+					],
+					[
+						1,
+						1,
+						2,
+						2
 					]
 				],
 				"cols":
 				[
 					0.0,
+					0.5,
 					1.0
 				],
 				"rows":
 				[
 					0.0,
+					0.794732414772,
 					1.0
 				]
 			}
@@ -696,7 +785,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 365.0,
+	"side_bar_width": 322.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
