@@ -82,7 +82,7 @@ cd fabric-dev-servers/
 Next generate the Business Network Archive (BNA) file from the root directory:
 
 ```
-cd bna
+cd rest-server
 npm install
 ```
 
