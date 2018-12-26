@@ -81,7 +81,6 @@ Angular application `=> http://localhost:4200`
 `bluemix cf start "${CF_APP}"`
 
 #  Running the Application (delopment mode)
-# Running the Application
 Follow these steps to setup and run this code pattern. The steps are described in detail below.
 
 ## Prerequisite
