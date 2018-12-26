@@ -25,61 +25,6 @@ Có 3 dashboard trong hệ thống.
 4. Người dân verify trạng thái phản ánh từ hệ thống block chain.
 5. Bộ Y Tế xem và kiểm tra toàn bộ chi tiết của quá trình xử lý phản ánh.
 
-# Included Components
-* [Hyperledger Composer v0.20.2](https://hyperledger.github.io/composer/latest/) Hyperledger Composer is an extensive, open development toolset and framework to make developing blockchain applications easier
-* [Hyperledger Fabric v1.2](https://hyperledger-fabric.readthedocs.io) Hyperledger Fabric is a platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability.
-* [IBM Blockchain Starter Plan](https://console.bluemix.net/catalog/services/blockchain) The IBM Blockchain Platform Starter Plan allows to build and try out blockchain network in an environment designed for development and testing
-
-## Featured Technologies
-* Laravel (https://laravel.com/) is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony.
-
-# Manually deploy to IBM Cloud.
-
-### Ping to the business network
-`composer card import -f ./admin@social-feedback.card`
-
-`composer network ping -c admin@social-feedback`
-
-### Upgrade to the business network
-Update the version property of package.json from 0.0.1 to 0.0.2
-
-`composer archive create -t dir -n .`
-
-`composer network install -c admin@social-feedback -a social-feedback@0.0.2.bna`
-
-`composer network upgrade -c admin@social-feedback -n social-feedback -V 0.0.2`
-
-### Generating a REST server and a skeleton Angular application
-`yo hyperledger-composer:angular`
-	
-	Do you want to connect to a running Business Network? Yes
-    Description: social-feedback
-    Author name: lftv
-    Author email: lftv@lifull-tech.vn    
-    License: Apache-2.0
-    Name of the Business Network card: admin@social-feedback
-    Do you want to generate a new REST API or connect to an existing REST API?  Generate a new REST API
-    REST server port: 3000
-    Should namespaces be used in the generated REST API? Never use namespaces
-
-`cd social-feedback`
-
-`npm start`
-
-REST server `=> http://localhost:3000`
-Angular application `=> http://localhost:4200`
-
-### Deploy Rest Server to Cloud Foundry Applications
- 1. Register cloudant wallet service and get credentials
- 2. Export cloudant wallet to NODE_CONFIG enviroment variable of cloud foundry app
- 3. Push app to cloud foundry services
-  ```
- bluemix cf push "${CF_APP}" --docker-image hyperledger/composer-rest-server:0.20.4 -c "npm install -g @ampretia/composer-wallet-cloudant; composer-rest-server -c admin@social-feedback -n never -w true" -i 1 -m 512M --no-start --no-manifest
-```
-4. Start rest server
-
-`bluemix cf start "${CF_APP}"`
-
 #  Running the Application (development mode)
 Follow these steps to setup and run this code pattern. The steps are described in detail below.
 
@@ -137,7 +82,7 @@ cd fabric-dev-servers/
 Next generate the Business Network Archive (BNA) file from the root directory:
 
 ```
-cd bna
+cd rest-server
 npm install
 ```
 
