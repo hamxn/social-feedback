@@ -16,8 +16,8 @@ Có 3 dashboard trong hệ thống.
 - Sở Y Tế là đơn vị tiếp nhận, xử lý, và cập nhật trạng thái phản ánh
 - Bộ Y Tế là bên thứ bên đóng vai trò giám sát.
 
-# Workflow Flow
-![Workflow Flow](https://github.com/hamxn/social-feedback/blob/master/workflow.jpg)
+# Workflow
+![Workflow](https://github.com/hamxn/social-feedback/blob/master/workflow.jpg)
 
 1. The Citizen sends a report
 2. The Department of Health received and process the report
