@@ -3,6 +3,8 @@
 - Local government authority are difficult to manage all
 - The information of solving not transparent for society.
 
+# Architecture flow
+![Architecture flow](https://github.com/hamxn/social-feedback/blob/master/architecture.png)
 
 # Workflow
 ![Workflow](https://github.com/hamxn/social-feedback/blob/master/workflow.jpg)
