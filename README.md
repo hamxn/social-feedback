@@ -112,5 +112,5 @@ To start the application:
 ```
 
 The REST server to communicate with network is available here:
-`http://localhost:3000/explorer/`
+`http://localhost:3001/explorer/`
 
