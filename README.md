@@ -1,6 +1,6 @@
 # Unsafe Food
 - Many food outside not safe for everybody
-- Local government authority difficult to manage all
+- Local government authority are difficult to manage all
 - The information of solving not transparent for society.
 
 
