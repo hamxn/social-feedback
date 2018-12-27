@@ -17,7 +17,7 @@ Có 3 dashboard trong hệ thống.
 - Bộ Y Tế là bên thứ bên đóng vai trò giám sát.
 
 # Architecture Flow
-![Architecture Flow](https://github.com/hamxn/social-feedback/blob/master/workflow.jpeg)
+![Architecture Flow](https://github.com/hamxn/social-feedback/blob/master/workflow.jpg)
 
 1. The Citizen sends a report
 2. The Department of Health received and process the report
