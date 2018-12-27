@@ -41,7 +41,7 @@ CREATE TABLE `admin_menu` (
 
 LOCK TABLES `admin_menu` WRITE;
 /*!40000 ALTER TABLE `admin_menu` DISABLE KEYS */;
-INSERT INTO `admin_menu` VALUES (1,0,1,'Tổng quan','fa-bar-chart','/',NULL,'2018-10-29 21:13:50'),(2,0,2,'Admin','fa-tasks','',NULL,NULL),(3,2,3,'Users','fa-users','auth/users',NULL,NULL),(4,2,4,'Roles','fa-user','auth/roles',NULL,NULL),(5,2,5,'Permission','fa-ban','auth/permissions',NULL,NULL),(6,2,6,'Menu','fa-bars','auth/menu',NULL,NULL),(8,0,8,'Danh sách đã xử lý','fa-check','/reports/completed','2018-10-08 02:33:23','2018-10-29 20:12:09'),(9,0,7,'Danh sách phản ánh','fa-file-text','/reports','2018-10-08 02:34:26','2018-10-29 20:12:09'),(10,0,9,'Gửi phản ánh','fa-file-o','/reports/create','2018-10-08 02:35:42','2018-10-29 20:12:09');
+INSERT INTO `admin_menu` VALUES (1,0,1,'Overview','fa-bar-chart','/',NULL,'2018-12-26 19:14:48'),(2,0,2,'Admin','fa-tasks','',NULL,NULL),(3,2,3,'Users','fa-users','auth/users',NULL,NULL),(4,2,4,'Roles','fa-user','auth/roles',NULL,NULL),(5,2,5,'Permission','fa-ban','auth/permissions',NULL,NULL),(6,2,6,'Menu','fa-bars','auth/menu',NULL,NULL),(8,0,8,'List Completed','fa-check','/reports/completed','2018-10-08 02:33:23','2018-12-26 19:15:24'),(9,0,7,'List Reports','fa-file-text','/reports','2018-10-08 02:34:26','2018-12-26 19:15:08'),(10,0,9,'Add Report','fa-file-o','/reports/create','2018-10-08 02:35:42','2018-12-26 19:15:34');
 /*!40000 ALTER TABLE `admin_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +127,7 @@ CREATE TABLE `admin_role_menu` (
 
 LOCK TABLES `admin_role_menu` WRITE;
 /*!40000 ALTER TABLE `admin_role_menu` DISABLE KEYS */;
-INSERT INTO `admin_role_menu` VALUES (1,2,NULL,NULL),(2,8,NULL,NULL),(2,9,NULL,NULL),(3,9,NULL,NULL),(2,10,NULL,NULL);
+INSERT INTO `admin_role_menu` VALUES (1,2,NULL,NULL),(2,8,NULL,NULL),(2,9,NULL,NULL),(3,9,NULL,NULL),(2,10,NULL,NULL),(4,9,NULL,NULL);
 /*!40000 ALTER TABLE `admin_role_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `admin_role_users` (
 
 LOCK TABLES `admin_role_users` WRITE;
 /*!40000 ALTER TABLE `admin_role_users` DISABLE KEYS */;
-INSERT INTO `admin_role_users` VALUES (1,1,NULL,NULL),(2,2,NULL,NULL),(2,3,NULL,NULL),(2,4,NULL,NULL),(2,5,NULL,NULL),(2,6,NULL,NULL),(2,7,NULL,NULL),(2,8,NULL,NULL),(3,9,NULL,NULL);
+INSERT INTO `admin_role_users` VALUES (2,2,NULL,NULL),(2,3,NULL,NULL),(2,4,NULL,NULL),(2,5,NULL,NULL),(2,6,NULL,NULL),(2,7,NULL,NULL),(2,8,NULL,NULL),(3,9,NULL,NULL),(3,10,NULL,NULL),(1,1,NULL,NULL),(1,1,NULL,NULL),(0,1,NULL,NULL),(4,11,NULL,NULL);
 /*!40000 ALTER TABLE `admin_role_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +257,7 @@ CREATE TABLE `admin_users` (
   `prefecture_id` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admin_users_username_unique` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,7 +266,7 @@ CREATE TABLE `admin_users` (
 
 LOCK TABLES `admin_users` WRITE;
 /*!40000 ALTER TABLE `admin_users` DISABLE KEYS */;
-INSERT INTO `admin_users` VALUES (1,'admin','$2y$10$l6E./eyX1xPRr4K.ZWFypu1M8c20NCHVilTuVlPVtgOoDhPjgUwAe','Bộ Y Tế',NULL,'rxr2ygdIWexu5stlHAMa7jHKxV3bnbytszVcwlL9pXbb9NvKXxXep5qyXb3V','2018-10-08 02:18:02','2018-10-29 21:31:41','',NULL),(2,'user1','$2y$10$cexvERBIU0dzPoDmkQ48r.TQWkHEFZtDu/9nAAXpegXvA.oYhK16.','user1',NULL,'JphkXtxU742blEGrHgOBjmb10z1eVlGz3I8DF8wb7ldhizE9yxqsbHp4ks7p','2018-10-15 18:06:14','2018-10-15 18:06:14','',NULL),(3,'user2','$2y$10$ln5iKKiYfnX/p68Gvhakxuqg.KR5Mg90KEFCViln.5JUBAVh5F9BG','user2',NULL,NULL,'2018-10-16 20:44:38','2018-10-16 20:44:38','test@mail.com',NULL),(4,'user3','$2y$10$bnNiDu1xnlED0Ch6nfmyjOjt3Qk7T09sEnn7R2.op0ZrqrhISOCJe','user3',NULL,NULL,'2018-10-16 20:52:09','2018-10-16 20:52:09','test3@mail.com',NULL),(5,'test5','$2y$10$P5XyRtx6srP2B8l.zZ/vIOJSdUxvG5lB/enDtqEN6yRnTvM22kK3u','test5',NULL,NULL,'2018-10-16 20:52:59','2018-10-16 20:52:59','test5@mail.com',NULL),(6,'user6','$2y$10$qTUlrHBXr0K7srw6Nat/aOy7zjtqEof5WxJx9WOhITWpa4MZCjpCO','user6',NULL,'EDavl8IygkjDCiXIDhDzk56YeyY16ufxu9O48syEwpIIX1JDkt2t8enJrtQE','2018-10-16 20:53:59','2018-10-16 20:53:59','test6@mail.com',NULL),(7,'user7','$2y$10$7Wg1H5HF7mXY612BhU1.lOAiznw9SJh90JP761pgb0Rb/cMiXrv1O','user7',NULL,NULL,'2018-10-16 20:54:53','2018-10-16 20:54:53','test7@mail.com',NULL),(8,'hamxn','$2y$10$GFwxkVN4KNMq5R.HqpcxFOAY2.8NDLH3R2zy5ugoXmu9iSDkysoWG','hamxn',NULL,'yL38Mw1tnhSwVpvxm4y1XHSOVzFPXsNOwrsZqhrwJWQf5jjiKHTqcr0upQpe','2018-10-28 21:17:27','2018-10-28 21:17:27','hamxn@lifull-tech.vn',NULL),(9,'hcmc','$2y$10$rwoOXoPFoHG/Rw9pwYnMue5tJO6GbN.3GqfoyLmjT21mspLuPGchG','Sở Y Tế TPHCM',NULL,'4Yfin700ujBxEQOpEn711Opefco8g3ilEQ6BZJ6VE8QXk1i11geksyrEM8vn','2018-10-29 21:28:10','2018-10-29 21:32:42',NULL,NULL);
+INSERT INTO `admin_users` VALUES (1,'admin','$2y$10$MtQ79ywDtJd/7wY6D.gBQOMePkAdNiAj0ztFARGG6eHS7/6m92Jgy','admin',NULL,'dhWUYYVOAf8KgO4A58eeetO6o2mGkrJGJOC11LFpwggyM4M034bQpDLXRg2e','2018-10-08 02:18:02','2018-12-26 18:54:56','',NULL),(2,'user1','$2y$10$cexvERBIU0dzPoDmkQ48r.TQWkHEFZtDu/9nAAXpegXvA.oYhK16.','user1',NULL,'JphkXtxU742blEGrHgOBjmb10z1eVlGz3I8DF8wb7ldhizE9yxqsbHp4ks7p','2018-10-15 18:06:14','2018-10-15 18:06:14','',NULL),(3,'user2','$2y$10$ln5iKKiYfnX/p68Gvhakxuqg.KR5Mg90KEFCViln.5JUBAVh5F9BG','user2',NULL,NULL,'2018-10-16 20:44:38','2018-10-16 20:44:38','test@mail.com',NULL),(4,'user3','$2y$10$bnNiDu1xnlED0Ch6nfmyjOjt3Qk7T09sEnn7R2.op0ZrqrhISOCJe','user3',NULL,NULL,'2018-10-16 20:52:09','2018-10-16 20:52:09','test3@mail.com',NULL),(5,'test5','$2y$10$P5XyRtx6srP2B8l.zZ/vIOJSdUxvG5lB/enDtqEN6yRnTvM22kK3u','test5',NULL,NULL,'2018-10-16 20:52:59','2018-10-16 20:52:59','test5@mail.com',NULL),(6,'user6','$2y$10$qTUlrHBXr0K7srw6Nat/aOy7zjtqEof5WxJx9WOhITWpa4MZCjpCO','user6',NULL,'EDavl8IygkjDCiXIDhDzk56YeyY16ufxu9O48syEwpIIX1JDkt2t8enJrtQE','2018-10-16 20:53:59','2018-10-16 20:53:59','test6@mail.com',NULL),(7,'user7','$2y$10$7Wg1H5HF7mXY612BhU1.lOAiznw9SJh90JP761pgb0Rb/cMiXrv1O','user7',NULL,NULL,'2018-10-16 20:54:53','2018-10-16 20:54:53','test7@mail.com',NULL),(8,'hamxn','$2y$10$GFwxkVN4KNMq5R.HqpcxFOAY2.8NDLH3R2zy5ugoXmu9iSDkysoWG','hamxn',NULL,'C4BLYIPg9ogXDhV9wekBeVs9diql5EKPpPhI0E0xqzVTNEDQsNEwwzEYXxYR','2018-10-28 21:17:27','2018-10-28 21:17:27','hamxn@lifull-tech.vn',NULL),(9,'hcmc','$2y$10$rwoOXoPFoHG/Rw9pwYnMue5tJO6GbN.3GqfoyLmjT21mspLuPGchG','HCM Department of Health',NULL,'Va0sLIJHsf0AGbehTJ9Do9SErxjPb7BIPay8ln7xotQBMBUicY8cBtvhYbZP','2018-10-29 21:28:10','2018-12-26 19:00:23',NULL,79),(10,'hanoi','$2y$10$/X/BP0lYacc278Qv9HIUGeAihGMqY7cAHxAvjc/Z8TVUvDOOGD1G6','Ha Noi Department of Health',NULL,'rSPhpzvFrPZHb8Dv6adfCWaIAPtbgy5gKoxKibQuMUFKN6rvUAaEkm6ZvRrX','2018-12-26 01:01:58','2018-12-26 19:00:39',NULL,1),(11,'boyte','$2y$10$bHn4gZDSxU34NsyFXTg94.Ic647btFawBjaJorZM9MqE9CIftZxUK','Ministry of Health',NULL,'IGc5faY7dlG3XZbMDE5oblFeBuaKHwBS8KJ5jxqfvkxFJMXT38YJwsQdYi2p','2018-12-26 18:56:43','2018-12-26 18:59:00',NULL,NULL);
 /*!40000 ALTER TABLE `admin_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,4 +392,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-30 13:30:55
+-- Dump completed on 2018-12-27  9:17:24

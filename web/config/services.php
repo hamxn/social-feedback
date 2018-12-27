@@ -36,6 +36,6 @@ return [
     ],
 
     'chain' => [
-        'domain' => 'http://192.168.0.118:3001/api/',
+        'domain' => 'http://localhost:3001/api/',
     ],
 ];
