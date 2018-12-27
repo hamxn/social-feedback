@@ -17,13 +17,13 @@ Có 3 dashboard trong hệ thống.
 - Bộ Y Tế là bên thứ bên đóng vai trò giám sát.
 
 # Architecture Flow
-![Architecture Flow](https://github.com/hamxn/social-feedback/blob/master/flow.png)
+![Architecture Flow](https://github.com/hamxn/social-feedback/blob/master/workflow.jpeg)
 
-1. Người dân gửi phản ánh đến hệ thống blockchain.
-2. Sở Y Tế tiếp nhận phản ánh
-3. Sở Y Tế xử lý phản ánh, update trạng thái vào cập nhận vào hệ thống blockchain.
-4. Người dân verify trạng thái phản ánh từ hệ thống block chain.
-5. Bộ Y Tế xem và kiểm tra toàn bộ chi tiết của quá trình xử lý phản ánh.
+1. The Citizen sends a report
+2. The Department of Health received and process the report
+3. The Department of Health update status for the report at process state.
+4. The Citizen can verify the process state.
+5. The Ministry of Health can verify all of the process.
 
 #  Running the Application (development mode)
 Follow these steps to setup and run this code pattern. The steps are described in detail below.
