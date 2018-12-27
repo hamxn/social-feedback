@@ -93,13 +93,13 @@ Now, we are ready to deploy the business network to Hyperledger Fabric. This req
 First, install the business network:
 
 ```
-composer network install --card PeerAdmin@hlfv1 --archiveFile social-feedback@0.1.1.bna
+composer network install --card PeerAdmin@hlfv1 --archiveFile social-feedback.bna
 ```
 
 Start the business network:
 
 ```
-composer network start --networkName social-feedback --networkVersion 0.1.15 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+composer network start --networkName social-feedback --networkVersion 0.1.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
 ```
 
 Import the network administrator identity as a usable business network card:
