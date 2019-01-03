@@ -11,8 +11,8 @@
 
 1. The Citizen sends a report
 2. The Department of Health received and process the report
-3. The Department of Health update status for the report at process state.
-4. The Citizen can verify the process state.
+3. The Department of Health update status of report
+4. The Citizen can verify the status of report
 5. The Ministry of Health can verify all of the process.
 
 #  Running the Application (development mode)
@@ -31,14 +31,14 @@ Follow these steps to setup and run this code pattern. The steps are described i
     `npm install -g composer-rest-server`
   * to install generator-hyperledger-composer
     `npm install -g generator-hyperledger-composer`
-
+    
 ## Steps
 1. [Clone the repo](#1-clone-the-repo)
 2. [Setup Fabric](#2-setup-fabric)
 3. [Generate the Business Network Archive](#3-generate-the-business-network-archive)
 4. [Deploy to Fabric](#4-deploy-to-fabric)
-5. [Run Application](#5-run-application)
-
+5. [Run Composer Rest Server](#5-run-composer-rest-server)
+6. [Run Application](#6-run-application)
 ## 1. Clone the repo
 
 Clone the this locally. In a terminal, run:
@@ -103,9 +103,7 @@ Check that the business network has been deployed successfully, run the followin
 composer network ping --card admin@social-feedback
 ```
 
-## 5. Run Application
-
-To start the application:
+## 5. Run Composer Rest Server
 
 ```
  composer-rest-server -c admin@social-feedback -n never -w true -p3001
@@ -113,4 +111,10 @@ To start the application:
 
 The REST server to communicate with network is available here:
 `http://localhost:3001/explorer/`
+
+## 6. Run Web Application
+Prerequisite: PHP, Apache, MySQL
+1. Source web: /web/
+2. Dump MySQL: /web/database/dump/dump_db.sql
+
 
