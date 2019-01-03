@@ -11,8 +11,8 @@
 
 1. The Citizen sends a report
 2. The Department of Health received and process the report
-3. The Department of Health update status for the report at process state.
-4. The Citizen can verify the process state.
+3. The Department of Health update status of report
+4. The Citizen can verify the status of report
 5. The Ministry of Health can verify all of the process.
 
 #  Running the Application (development mode)
