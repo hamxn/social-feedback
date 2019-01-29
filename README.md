@@ -116,5 +116,6 @@ The REST server to communicate with network is available here:
 Prerequisite: PHP, Apache, MySQL
 1. Source web: /web/
 2. Dump MySQL: /web/database/dump/dump_db.sql
+3. Change API domain: /app/config/services.php
 
 
